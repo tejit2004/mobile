@@ -1,7 +1,7 @@
 <?php
 ini_set("display_errors",0);
 if(!session_id()) session_start();
-require_once('../Connections/Login.php');
+require_once('../../Connections/Login.php');
 $action = $_REQUEST['action']; // We dont need action for this tutorial, but in a complex code you need a way to determine ajax action nature
 
 if($action == 'login')

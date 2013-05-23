@@ -1,5 +1,5 @@
 <?php
-require_once('../Connections/Login.php');
+require_once('../../Connections/Login.php');
 require_once('functions.php');
 $errMsg = '';
 $successMsg = 'false';

@@ -1,6 +1,6 @@
 <?php
 if(!session_id()) session_start();
-require_once('../Connections/Login.php');
+require_once('../../Connections/Login.php');
 require_once('functions.php');
 $type	= isset($_REQUEST['type'])?trim($_REQUEST['type']):'';
 $inventoryid 	= isset($_REQUEST['add_inventoryid'])?trim($_REQUEST['add_inventoryid']):'';
