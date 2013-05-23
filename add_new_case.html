@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cerberus Networks - Add new case</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"/>
+    <link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css" />
+    <script src="jquery/jquery-1.9.1.min.js"></script>    
+    <script src="jquery/jquery.mobile-1.3.1.min.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="./js/add_new_case.js"></script>
+    <style>
+	.text-label {
+			color: #aaa;			
+		} 
+	</style>
+</head>
+<body>
+    
+    <div data-role="page" id="add_new_case">
+        <div data-theme="a" data-role="header">    
+        	<a data-role="button" data-rel="back" data-icon="arrow-l" href="list.html">Back</a>       
+            <h3>Add a new case</h3>
+        </div>
+
+        <div data-role="content">
+			<form id="add_new_case" class="ui-body ui-body-a ui-corner-all" data-ajax="false" accept-charset="UTF-8">
+                <fieldset>                
+                	<div data-role="fieldcontain" data-theme="b">
+                        <!--<label for="add_inventoryid" class="select" style="display:none;">Select Inventory</label>-->
+                        <select name="add_inventoryid" id="add_inventoryid">
+                            
+                        </select>
+                    </div>
+                    
+                                                    
+                    <div>
+                        <input type="text" value="" name="add_make_model" id="add_make_model" title="Device Make and Model" readonly/>
+                    </div>
+                    <div>
+                        <input type="text" value="" name="add_name" id="add_name" title="Name" readonly/>
+                    </div>
+                    <div>
+                        <input type="text" value="" name="add_srno" id="add_srno" title="Serial Number" readonly/>
+                    </div>
+                    <div>
+                        <input type="text" value="" name="subject" id="subject" title="Case Name"/>
+                    </div>
+                    <div>
+                        <input type="text" value="" name="add_description" id="add_description" title="Description"/>
+                    </div>
+                    <input type="button" data-theme="b" name="submit_case" id="submit_case" value="Submit">
+                </fieldset>
+            </form>  
+        </div>
+
+        <div data-theme="a" data-role="footer" data-position="fixed">
+            <h3>Page footer</h3>
+        </div>
+    </div>
+</body>
+</html>
