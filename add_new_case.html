@@ -23,12 +23,15 @@
         </div>
 
         <div data-role="content">
+        	<div style='color:green;display:none;' id="caseid_div">
+            	Your Case Successfully logged. Case Reference is : <span id="caseid_span"></span>
+            </div>
 			<form id="add_new_case" class="ui-body ui-body-a ui-corner-all" data-ajax="false" accept-charset="UTF-8">
                 <fieldset>                
                 	<div data-role="fieldcontain" data-theme="b">
                         <!--<label for="add_inventoryid" class="select" style="display:none;">Select Inventory</label>-->
                         <select name="add_inventoryid" id="add_inventoryid">
-                            
+                            <option value="0">Select Inventory</option>                            
                         </select>
                     </div>
                     

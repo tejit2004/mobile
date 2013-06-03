@@ -50,7 +50,7 @@ $(document).on('pageinit', '#add_new_case', function(){
 		success: function (result) {
 			
 			var output = '';
-			output =+ '<option value="">Select Inventory</option>';	
+			output += '<option value="0">Select Inventory</option>';	
 			
 			var lines = result.split('#*');
 			
@@ -128,7 +128,7 @@ $(document).on('pageinit', '#add_new_case', function(){
 	
 		if($('#add_inventoryid').val().length > 0 && $('#subject').val().length > 0 && $('#add_description').val().length > 0){
             
-				
+				var username = localStorage.getItem('username');	
 				var add_inventoryid = $('#add_inventoryid').val();
 				var add_make_model = $('#add_make_model').val();
 				var add_name = $('#add_name').val();
@@ -136,9 +136,10 @@ $(document).on('pageinit', '#add_new_case', function(){
 				var subject = $('#subject').val();
 				var add_description = $('#add_description').val();
 				
-				var clientID = sessionStorage.getItem("clientID");
 				
-				if(add_inventoryid == 'Enter Name' || subject == 'Case Name' || add_description == 'Description')
+				var clientID = sessionStorage.getItem("clientID");
+				var error = '';
+				if(add_inventoryid == 'Enter Name' || add_inventoryid == '0' || subject == 'Case Name' || add_description == 'Description')
 				{
 					error += 'Please fill all necessary fields\n';
 				}
@@ -147,9 +148,10 @@ $(document).on('pageinit', '#add_new_case', function(){
 				{
 					$.ajax({url: global_url+'ajaxfiles/add_new_case.php',
 						//data:{action : 'login', formData : $('#check-user').serialize()}, // Convert a form to a JSON string representation
-						data:{type : 'save', add_inventoryid : add_inventoryid, add_make_model : add_make_model, add_name : add_name, add_srno : add_srno, subject : subject, add_description : add_description, clientID : clientID}, 
+						data:{type : 'save', add_inventoryid : add_inventoryid, add_make_model : add_make_model, add_name : add_name, add_srno : add_srno, subject : subject, add_description : add_description, clientID : clientID, username : username}, 
 						type: 'post',                   
 						async: true,
+						dataType: 'json',	
 						beforeSend: function() {
 							// This callback function will trigger before data is sent
 							//$.mobile.showPageLoadingMsg(true); // This will show ajax spinner
@@ -163,12 +165,39 @@ $(document).on('pageinit', '#add_new_case', function(){
 							$.mobile.loading( 'hide' );
 						},
 						success: function (result) {
-							$('#add_inventoryid').val('');
-							$('#add_make_model').val('');
-							$('#add_name').val('');
-							$('#add_srno').val('');
-							$('#subject').val('');
-							$('#add_description').val('');
+							
+							if(result.ret == true)
+							{
+								
+								$('#caseid_div').attr('style', 'display:"";');
+								$('#caseid_span').html(result.caseID);
+								//$('#add_inventoryid').val('');
+								//$('#add_inventoryid').text('Select Inventory');
+								
+								$('#add_make_model').val('Device Make and Model');
+								$('#add_make_model').attr('title', 'Device Make and Model');								
+								$("#add_make_model").addClass('text-label');
+								
+								$('#add_name').val('Name');
+								$('#add_name').attr('title', 'Name');
+								$("#add_name").addClass('text-label');
+								
+								$('#add_srno').val('Serial Number');
+								$('#add_srno').attr('title', 'Serial Number');
+								$("#add_srno").addClass('text-label');
+								
+								$('#subject').val('Case Name');
+								$("#subject").addClass('text-label');
+								
+								$('#add_description').val('Description');					
+								$("#add_description").addClass('text-label');
+							}
+							else
+							{
+                                alert('Some problem occured');
+							}
+							
+							
 						},
 						error: function (request,error) {
 							// This callback function will trigger on unsuccessful action                
