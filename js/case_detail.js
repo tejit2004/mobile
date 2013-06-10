@@ -1,4 +1,4 @@
-$(document).on('pageinit', '#update_case', function(){    	
+/*$(document).on('pagebeforeshow', '#update_case', function(){    	
 	
 	$('input[type="text"]').each(function()
 	{ 
@@ -39,7 +39,7 @@ $(document).on('pageinit', '#update_case', function(){
 			}
 		});
 	});
-});
+});*/
 
 
 $(document).on('click', '#add_note', function(){ 	
@@ -64,15 +64,17 @@ $(document).on('click', '#submit_addnote', function() { // catch the form's subm
 	var contactID = sessionStorage.getItem("contactID");
 	var error = '';
 	
-	if(subject == 'Subject' || comment == 'Comment')
+	if(subject == 'Subject' || comment == 'Comment' || subject == '' || comment == '')
 	{
 		error += 'Please fill all necessary fields\n';
 	}
 	
 	if(error == '')
 	{
+		
 		if(subject.length > 0 && comment.length > 0)
-		{	
+		{
+			$('#popupLogin').popup("close");	
 			$("body").addClass('ui-disabled');
 			$.ajax({url: global_url + 'ajaxfiles/add_comment.php',
 				//data:{action : 'login', formData : $('#check-user').serialize()}, // Convert a form to a JSON string representation
@@ -93,11 +95,12 @@ $(document).on('click', '#submit_addnote', function() { // catch the form's subm
 				success: function (result) {                							
 						resultObject.formSubmitionResult = result;
 						if(result.ret == true)
-						{		
+						{
 							//$("#locator").dialog("close");
-							$('.ui-dialog').dialog('close');
+							//$('.ui-dialog').dialog('close');
+							$('#summary').html(result.summary);					
 							alert('Case updated Successfully');
-							//$('.summary').html(result.summary);					
+							
 						}
 						
 				},
@@ -115,6 +118,46 @@ $(document).on('click', '#submit_addnote', function() { // catch the form's subm
 });
 
 $(document).on('pageinit', '#case_detail', function(){ 
+
+	$('input[type="text"]').each(function()
+	{ 
+		this.value = $(this).attr('title');
+		$(this).addClass('text-label');
+	 
+		$(this).focus(function(){
+			if(this.value == $(this).attr('title')) {
+				this.value = '';
+				$(this).removeClass('text-label');
+			}
+		});
+	 
+		$(this).blur(function(){
+			if(this.value == '') {
+				this.value = $(this).attr('title');
+				$(this).addClass('text-label');
+			}
+		});
+	});
+	
+	$('textarea').each(function()
+	{ 
+		this.value = $(this).attr('title');
+		$(this).addClass('text-label');
+	 
+		$(this).focus(function(){
+			if(this.value == $(this).attr('title')) {
+				this.value = '';
+				$(this).removeClass('text-label');
+			}
+		});
+	 
+		$(this).blur(function(){
+			if(this.value == '') {
+				this.value = $(this).attr('title');
+				$(this).addClass('text-label');
+			}
+		});
+	});
 
 	var clientID = sessionStorage.getItem("clientID");
 	CaseID = decodeURIComponent($.urlParam('ID'));
