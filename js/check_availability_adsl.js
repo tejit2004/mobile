@@ -43,6 +43,7 @@ $(document).on('pagebeforeshow', '#adsl_availability', function(){
 				
 				if(error == '')
 				{
+					$("body").addClass('ui-disabled');
 					$.ajax({url: global_url+'ajaxfiles/check_adsl_availability.php',
 						//data:{action : 'login', formData : $('#check-user').serialize()}, // Convert a form to a JSON string representation
 						data:{name : name, company : company, telephone : telephone, email : email}, 
@@ -59,10 +60,12 @@ $(document).on('pagebeforeshow', '#adsl_availability', function(){
 							// This callback function will trigger on data sent/received complete
 							//$.mobile.hidePageLoadingMsg(); // This will hide ajax spinner
 							$.mobile.loading( 'hide' );
+							$("body").removeClass('ui-disabled');		
 						},
 						success: function (result) {
 								$.mobile.changePage("#adsl_availability_result");								
-								$('#adsl_html').html(result);										
+								$('#adsl_html').html(result);		
+								$( "my-table" ).table( "refresh" );								
 						},
 						error: function (request,error) {
 							// This callback function will trigger on unsuccessful action                

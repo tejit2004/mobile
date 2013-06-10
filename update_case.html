@@ -7,16 +7,22 @@
     <script src="./jquery/jquery-1.9.1.min.js"></script>    
     <script src="./jquery/jquery.mobile-1.3.1.min.js"></script>    
     <script src="./js/index.js"></script>
-	<script src="./js/case_detail.js"></script>
+	<script src="./js/case_detail.js"></script>    
+    <style>
+	.text-label {
+			color: #aaa;			
+		} 
+	</style>
 </head>
 <body>
-    <div data-role="dialog" id="update_case" data-theme="b" data-overlay-theme="e" data-dom-cache="true">
+    <div data-role="dialog" id="update_case" data-theme="b">
         <div data-role="header" data-theme="b">
             <h3>Add Note</h3>
         </div>
 
         <div data-role="content">
             <form id="update_case_form" class="ui-body ui-body-a ui-corner-all" data-ajax="true" accept-charset="UTF-8">
+            	
                 <fieldset>                
                 	<div>
                         <input type="text" value="" name="subject" id="subject" title="Subject" />

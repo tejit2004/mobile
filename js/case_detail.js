@@ -42,54 +42,84 @@ $(document).on('pageinit', '#update_case', function(){
 });
 
 
+$(document).on('click', '#add_note', function(){ 	
+			var CaseID = decodeURIComponent($.urlParam('ID'));	
+			$.mobile.changePage('update_case.html?ID='+CaseID, {
+						changeHash: true,
+						dataUrl: "",    //the url fragment that will be displayed for the test.html page
+						transition: "pop"  //if not specified used the default one or the one defined in the default settings
+						});
+			
+			
+
+	  
+});	
+
 $(document).on('click', '#submit_addnote', function() { // catch the form's submit event
 	
+	var CaseID = decodeURIComponent($.urlParam('ID'));	
 	var subject = trim($('#subject').val());
 	var comment = trim($('#comment').val());
 	
-	if(subject.length > 0 && comment.length > 0)
-	{		
-		$.ajax({url: global_url + 'ajaxfiles/add_comment.php',
-			//data:{action : 'login', formData : $('#check-user').serialize()}, // Convert a form to a JSON string representation
-			data:{subject : subject, comment : comment}, 
-			type: 'post',
-			dataType: 'json',	                   
-			async: true,
-			beforeSend: function() {
-				// This callback function will trigger before data is sent
-				//$.mobile.showPageLoadingMsg(true); // This will show ajax spinner
-				//$.mobile.loading( 'show' );
-				$.mobile.loading( "show", {	text: "Updating Case",textVisible: true,theme: "a",html: ""});
-			},
-			complete: function() {
-				// This callback function will trigger on data sent/received complete
-				//$.mobile.hidePageLoadingMsg(); // This will hide ajax spinner						
-				$.mobile.loading( 'hide' );
-			},
-			success: function (result) {                							
-					resultObject.formSubmitionResult = result;
-					if(result.ret == true)
-					{		
-						$( ".update_case" ).dialog( "close" );					
-					}
-					else
-					{
-						alert('Incorrect Username or password');
-					}
-			},
-			error: function (request,error) {
-				// This callback function will trigger on unsuccessful action                
-				alert('Network error has occurred please try again!');
-			}
-		});
+	var contactID = sessionStorage.getItem("contactID");
+	var error = '';
+	
+	if(subject == 'Subject' || comment == 'Comment')
+	{
+		error += 'Please fill all necessary fields\n';
+	}
+	
+	if(error == '')
+	{
+		if(subject.length > 0 && comment.length > 0)
+		{	
+			$("body").addClass('ui-disabled');
+			$.ajax({url: global_url + 'ajaxfiles/add_comment.php',
+				//data:{action : 'login', formData : $('#check-user').serialize()}, // Convert a form to a JSON string representation
+				data:{CaseID : CaseID, contactID : contactID,  subject : subject, comment : comment}, 
+				type: 'post',
+				dataType: 'json',	                   
+				async: true,
+				beforeSend: function() {
+					// This callback function will trigger before data is sent
+					//$.mobile.showPageLoadingMsg(true); // This will show ajax spinner
+					//$.mobile.loading( 'show' );
+					$.mobile.loading( "show", {	text: "Updating Case",textVisible: true,theme: "a",html: ""});
+				},
+				complete: function() {
+					$.mobile.loading( 'hide' );		
+					$("body").removeClass('ui-disabled');		
+				},
+				success: function (result) {                							
+						resultObject.formSubmitionResult = result;
+						if(result.ret == true)
+						{		
+							//$("#locator").dialog("close");
+							$('.ui-dialog').dialog('close');
+							alert('Case updated Successfully');
+							//$('.summary').html(result.summary);					
+						}
+						
+				},
+				error: function (request,error) {
+					// This callback function will trigger on unsuccessful action                
+					alert('Network error has occurred please try again!');
+				}
+			});
+		}
+	}
+	else
+	{
+		alert(error);
 	}
 });
 
-$(document).on('pageinit', '#case_detail', function(){    	
-	
+$(document).on('pageinit', '#case_detail', function(){ 
+
 	var clientID = sessionStorage.getItem("clientID");
 	CaseID = decodeURIComponent($.urlParam('ID'));
-	
+	$('.case_id').html(CaseID);
+	$("body").addClass('ui-disabled');
 	$.ajax({url: global_url+'ajaxfiles/case_detail.php',
 			
 		data:{clientID : clientID, CaseID : CaseID}, 
@@ -104,31 +134,29 @@ $(document).on('pageinit', '#case_detail', function(){
 			
 		},
 		complete: function() {
-			// This callback function will trigger on data sent/received complete
-			//$.mobile.hidePageLoadingMsg(); // This will hide ajax spinner
 			$.mobile.loading( 'hide' );
+			$("body").removeClass('ui-disabled');
 		},
-		success: function (result) {						
-			//$('#view_cases_tbody').html(result);
-			//$("#table-column-toggle").table("refresh");		
-			//$("#table-column-toggle").table-columntoggle( "refresh" );	
+		success: function (result) {									
 			
-			
-			$('#summary').html(result.summary);	
-			
-			var html = '';
+			var result_html = '';
 			if(result.ret == true)
 			{
-				html += '<tr><td><b>Case ID : </b></td><td>'+ result.id +'</td></tr><tr><td><b>Status : </b></td><td>'+ result.status +'</td></tr><tr><td><b>Case Name : </b></td><td>'+ result.subject +'</td></tr><tr><td><b>Created By : </b></td><td>'+ result.created_by +'</td></tr><tr><td><b>Created Date : </b></td><td>'+ result.created_date +'</td></tr><tr><td><b>Owner : </b></td><td>'+ result.owner +'</td></tr><tr><td><b>Case Type : </b></td><td>'+ result.case_type +'</td></tr><tr><td><b>Contract : </b></td><td>'+ result.contract +'</td></tr><tr><td><b>Description : </b></td><td>'+ result.desc +'</td></tr>';
+				result_html += '<tr><td><b>Case ID : </b></td><td>'+ result.id +'</td></tr><tr><td><b>Status : </b></td><td>'+ result.status +'</td></tr><tr><td><b>Case Name : </b></td><td>'+ result.subject +'</td></tr><tr><td><b>Created By : </b></td><td>'+ result.created_by +'</td></tr><tr><td><b>Created Date : </b></td><td>'+ result.created_date +'</td></tr><tr><td><b>Owner : </b></td><td>'+ result.owner +'</td></tr><tr><td><b>Case Type : </b></td><td>'+ result.case_type +'</td></tr><tr><td><b>Contract : </b></td><td>'+ result.contract +'</td></tr><tr><td><b>Description : </b></td><td>'+ result.desc +'</td></tr>';
+				
+				$('#summary').html(result.summary);
+				/*$( "table#case_detail_table tbody" )
+				
+				.html( result_html )
+				
+				.closest( "table#case_detail_table" )
+				.table( "refresh" )				*/				
+				
+				$('#detail_tbody').html(result_html);				
+				$( "case_detail_table" ).table( "refresh" );
 			}
 			
-			$('.summary').html(result.summary);
-			$( "table#case_detail_table tbody" )
-            
-            .html( html )
-            
-            .closest( "table#case_detail_table" )
-            .table( "refresh" )
+			
             // Trigger if the new injected markup contain links or buttons that need to be enhanced
             //.trigger( "create" );
 			

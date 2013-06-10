@@ -7,45 +7,28 @@
 <script src="./jquery/jquery-1.9.1.min.js"></script>
 <script src="./jquery/jquery.mobile-1.3.1.min.js"></script>
 <script src="./js/index.js"></script>
-<script src="./js/case_detail.js"></script>
 <style type="text/css">
 body {
 	font-size: 12px;
 }
-
-.text-label {
-	color: #aaa;			
-} 
-
-.ui-mobile [data-role="dialog"], .ui-page {
-display:block !important;
-}
 </style>
 </head>
 <body>
-<div data-role="page" id="case_detail" data-transition="slide">
+<div data-role="page" id="dslam_status_detail" data-transition="slide">
   <div data-theme="a" data-role="header"> 
   	<a data-role="button" data-rel="back" data-icon="arrow-l" href="list.html">Back</a>
-    <h3>Case Detail</h3>
-    <a id="add_note" data-rel="dialog">Add Notes</a>
+    <h3>DSLAM Status</h3>   
   </div>
   <div data-role="content" class="ui-content">
     <div data-role="collapsible" data-content-theme="c" data-collapsed="false">
-      <h3>Summary</h3>
-      <span id="case_id" style="display:none;"></span>
-      <table data-mode="reflow" id="case_detail_table" class="ui-responsive table-stroke ui-table ui-body-d table-stripe">
-        <tbody id="detail_tbody">
+      <h3>DSLAM Status</h3>     
+      <table data-mode="reflow" id="dslam_table" class="ui-responsive table-stroke ui-table ui-body-d table-stripe">
+        <tbody id="dslam_detail_tbody">
           <tr>
             <td colspan="2" style="text-align:center;"><img src="images/ajax-loader.gif"></td>
           </tr>
         </tbody>
       </table>
-    </div>
-    
-      
-  <div data-role="collapsible" data-content-theme="c">
-       <h3>Comments and Actions</h3>
-       <p id="summary"><img src="images/ajax-loader.gif"></p>
     </div>
   
 <div data-theme="a" data-role="footer" data-position="fixed">
@@ -55,3 +38,4 @@ display:block !important;
 </div>
 </body>
 </html>
+<script src="./js/dslam_status.js"></script>

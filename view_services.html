@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cerberus Networks - Login</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"/>
+    <link rel="stylesheet" href="./css/jquery.mobile-1.3.1.min.css" />
+    <script src="./jquery/jquery-1.9.1.min.js"></script>       
+    <script src="./jquery/jquery.mobile-1.3.1.min.js"></script>    
+    <script src="./js/index.js"></script>
+	<script src="./js/view_services.js"></script>
+    
+    <style type="text/css">	   
+	 body {
+	  font-size: 12px; 
+	}  
+	
+	.text-label {
+			color: #aaa;			
+		} 
+	</style>
+</style>  
+</head>
+<body>
+    
+    <div data-role="page" id="view_services" data-transition="slide">
+        <div data-theme="a" data-role="header">
+            <a data-role="button" data-rel="back" data-icon="arrow-l" href="list.html">Back</a>
+            <h3>View Services</h3>
+        </div>		
+        <div data-role="content">
+        	
+            <div data-role="collapsible" data-content-theme="c" data-collapsed="false" id="search_id">
+               <h3>Search Services</h3>
+               <form id="form_services" class="ui-body ui-body-c ui-corner-all" data-theme="c" data-ajax="true" accept-charset="UTF-8">
+                <fieldset data-theme="c">
+                    <div data-role="fieldcontain" data-theme="c">
+                        <input type="text" value="" name="inventoryid" id="inventoryid" title="Inventory ID" />
+                    </div> 
+                    <div data-role="fieldcontain" data-theme="c">
+                        <input type="text" value="" name="srno" id="srno" title="Sr.No/CLI/IP" />
+                    </div>                                  
+                    <div data-role="fieldcontain">                       
+                        <select id="type" name="type" data-native-menu="false" >
+                            <option value="">Select Service Type</option>
+                            <option value="Backup">Backup</option>
+                            <option value="Computer">Computer</option>
+                            <option value="Connection">Connection</option>
+                            <option value="Domain">Domain</option>
+                            <option value="Generic">Generic</option>
+                            <option value="Hosting">Hosting</option>
+                            <option value="Network">Network</option>
+                            <option value="Peripheral">Peripheral</option>
+                            <option value="Software">Software</option>                                        
+                        </select>
+                        
+                    </div>
+                    
+                    <input type="button" data-theme="b" class="show-page-loading-msg" name="submit" id="submit" value="Search">
+                </fieldset>
+            </form>	
+            </div>
+            
+            <div data-role="collapsible" id="result_id" data-content-theme="c" style="display:none;">
+               <h3>Search Result</h3>                      
+              
+                <table data-role="table" id="view_services_table" data-mode="columntoggle" class="ui-responsive table-stroke ui-table ui-table-columntoggle ui-body-d table-stripe">
+                  <thead>
+                    <tr class="ui-bar-d">
+                      <th>Inventory ID</th>
+                      <th data-priority="2">SrNo/CLI</th>
+                      <th data-priority="1">Order Ref</th>                  
+                    </tr>
+                  </thead>
+                  <tbody id="view_services_tbody">
+                    <tr><td colspan="3" style="text-align:center;"><img src="images/ajax-loader.gif"></td></tr>
+                </table>
+              
+            </div>
+            
+			
+        </div>
+        
+        
+        
+
+        <div data-theme="a" data-role="footer" data-position="fixed">
+            <h3>Page footer</h3>
+        </div>
+    </div>
+    
+    
+    <!--<div data-role="page" id="logout">
+        <div data-theme="a" data-role="header">
+            <h3></h3>
+        </div>
+
+        <div data-role="content">			
+        </div>
+
+        <div data-theme="a" data-role="footer" data-position="fixed">
+            <h3>Page footer</h3>
+        </div>
+    </div>-->
+    
+    
+</body>
+</html>
