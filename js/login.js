@@ -116,7 +116,8 @@ $(document).on('pagebeforeshow', '#login', function(){
                     }
                 });                   
         } else {
-            do_alert(0,'Please fill all necessary fields');
+            //do_alert(0,'Please fill all necessary fields');
+			alert('Please fill all necessary fields');
         }           
             return false; // cancel original event to prevent form submitting
         });    
