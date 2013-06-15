@@ -6,41 +6,26 @@
     <link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css" />
     <script src="jquery/jquery-1.9.1.min.js"></script>    
     <script src="jquery/jquery.mobile-1.3.1.min.js"></script>
-    <script src="./js/index.js"></script>
-    <script src="./js/add_new_case.js"></script>
+    <script src="./js/index.js"></script>	
+    <script src="./js/raise_new_case.js"></script>
     <style>
 	.text-label {
 			color: #aaa;			
-		} 
-		
-	 body {
-	  font-size: 12px; 
-	}  
-	
-	#tooltip
-	{
-		text-align: center;
-		color: #fff;
-		background: #111;
-		position: absolute;
-		z-index: 100;
-		padding: 15px;
-	}
-	</style>
+		}
+	</style>    
 </head>
 <body>
     
-    <div data-role="page" id="add_new_case">
+    <div data-role="page" id="raise_new_case" data-transition="slide">
+    
+    	
         <div data-theme="a" data-role="header">    
         	<a data-role="button" data-rel="back" data-icon="arrow-l" href="list.html">Back</a>       
-            <h3>Add a new case</h3>
+            <h3>Raise a new case</h3>
         </div>
 
         <div data-role="content">
-        	<!--<div style='color:green;display:none;' id="caseid_div">
-            	Your Case Successfully logged. Case Reference is : <span id="caseid_span"></span>
-            </div>-->
-			<form id="add_new_case" class="ui-body ui-body-c ui-corner-all" data-ajax="false" accept-charset="UTF-8">
+        	<form class="ui-body ui-body-c ui-corner-all" accept-charset="UTF-8">
                 <fieldset>                
                 	<div>
                         <input type="text" value="" name="subject" id="subject" title="Case Name"/>
@@ -48,9 +33,6 @@
                     <div data-role="fieldcontain">
                         <textarea name="add_description" id="add_description" title="Fault Description"></textarea>                        
                     </div>                                                    
-                    
-                    <a href="#" data-role="button" id="create">Find Inventory</a>
-                    
                     <div>
                         <input type="text" value="" name="add_inventoryid" id="add_inventoryid" title="Inventory ID" readonly/>
                     </div>
@@ -65,27 +47,8 @@
                     </div>                    
                     <input type="button" data-theme="b" name="submit_case" id="submit_case" value="Submit">
                 </fieldset>
-            </form>  
+            </form>
         </div>
-        
-        <div style="margin:5px;" data-role="popup" id="inventoryResult" data-overlay-theme="e" data-theme="a">
-            <a href="#" data-rel="back" data-role="button" data-theme="c" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
-            <table id="findinventory_table" class="ui-responsive table-stroke ui-table ui-body-d table-stripe">        
-            <thead>
-            	<tr>
-                	<th width="30%">Inventory ID</th>
-                    <th width="40%">Manufacturer</th>
-                    <th width="30%">Sr.No</th>
-                </tr>
-            </thead>
-            <tbody id="detail_tbody">
-              <tr>
-                <td colspan="3" style="text-align:center;"><img src="images/ajax-loader.gif"></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
         <div data-theme="a" data-role="footer" data-position="fixed">
             <h3>Page footer</h3>
         </div>

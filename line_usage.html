@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cerberus Networks - Case Detail</title>
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"/>
+<link rel="stylesheet" href="./css/jquery.mobile-1.3.1.min.css" />
+<script src="./jquery/jquery-1.9.1.min.js"></script>
+<script src="./jquery/jquery.mobile-1.3.1.min.js"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="./js/index.js"></script>
+<script src="./js/line_usage.js"></script>
+<style type="text/css">
+body {
+	font-size: 12px;
+}
+</style>
+</head>
+<body>
+<div data-role="page" id="line_usage" data-transition="slide">
+  <div data-theme="a" data-role="header"> 
+  	<a data-role="button" data-rel="back" data-icon="arrow-l" href="list.html">Back</a>
+    <h3>Line Usage</h3> 
+  </div>  
+  
+  <div data-role="navbar">
+        <ul>
+            <li id="daily"><a class="ui-btn-active ui-state-persist">Daily</a></li>
+            <li id="monthly"><a>Monthly</a></li>
+            <li id="graph"><a>Graph</a></li>
+        </ul>
+  </div><!-- /navbar -->    
+
+  <div data-role="content" class="ui-content">
+  	<span id="monthly_data" style="display:none;"></span>
+    <span id="monthly_dates" style="display:none;"></span>
+    <div id="result_daily">
+      <table id="daily_table" class="ui-responsive table-stroke ui-table ui-body-d table-stripe">
+        <thead>
+            <tr class="ui-bar-d">
+                <th>Date</th>
+                <th>Down (GB)</th>
+                <th>Up (GB)</th>
+                <th>Total (GB)</th>
+            </tr>
+        </thead>
+        <tbody id="daily_detail_tbody">
+          <tr>
+            <td colspan="4" style="text-align:center;">&nbsp;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="result_monthly" style="display:none;">
+      <table id="monthly_table" class="ui-responsive table-stroke ui-table ui-body-d table-stripe">
+        <thead>
+            <tr class="ui-bar-d">
+                <th>Date</th>
+                <th>Down(GB)</th>
+                <th>Up(GB)</th>
+                <th>Total(GB)</th>
+                <th>Cap(GB)</th>
+                <th>OverUsage</th>
+            </tr>
+        </thead> 
+        <tbody id="monthly_detail_tbody">
+          <tr>
+            <td colspan="6" style="text-align:center;">&nbsp;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div id="result_graph" style="display:none;">
+    </div>
+    
+  </div>
+  <div data-theme="a" data-role="footer" data-position="fixed">
+      <h3>2013 Cerberus Networks</h3>
+  </div>
+  
+</div>
+</body>
+</html>

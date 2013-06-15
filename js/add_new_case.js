@@ -1,9 +1,44 @@
-var Arrinventory = new Array();
+/*var Arrinventory = new Array();
 var ArrinventoryName = new Array();
 var Arrmake_model = new Array();
 var Arrname = new Array();
 var Arrsrno = new Array();
-var Arrcli = new Array();
+var Arrcli = new Array();*/
+
+var findinventory_div;
+var inventoryresult_div;
+
+function fillDetail(id)
+{
+	var inventory_id = 'inventory_'+id;
+	var manufacturer_id = 'manufacturer_'+id;
+	var model_id = 'model_'+id;
+	var name_id = 'name_'+id;
+	var srno_id = 'srno_'+id;
+	
+	var inventory = document.getElementById(inventory_id).getAttribute('title');
+	var manufacturer = document.getElementById(manufacturer_id).getAttribute('title');
+	var model = document.getElementById(model_id).getAttribute('title');
+	var name = document.getElementById(name_id).getAttribute('title');
+	var srno = document.getElementById(srno_id).getAttribute('title');	
+	
+	var manufacturer_model = manufacturer + ' ' + model;
+ 	
+	$('#add_inventoryid').val(inventory);							
+	$("#add_inventoryid").removeClass('text-label');
+	
+	$('#add_make_model').val(manufacturer_model);							
+	$("#add_make_model").removeClass('text-label');
+	
+	$('#add_name').val(name);	
+	$("#add_name").removeClass('text-label');
+	
+	$('#add_srno').val(srno);	
+	$("#add_srno").removeClass('text-label');
+	
+	$('#inventoryResult').popup("close");
+	
+}
 
 $(document).on('pageinit', '#add_new_case', function(){    	
 	
@@ -27,10 +62,30 @@ $(document).on('pageinit', '#add_new_case', function(){
 		});
 	});
 	
-	var clientID = sessionStorage.getItem("clientID");
+	$('textarea').each(function()
+	{ 
+		this.value = $(this).attr('title');
+		$(this).addClass('text-label');
+	 
+		$(this).focus(function(){
+			if(this.value == $(this).attr('title')) {
+				this.value = '';
+				$(this).removeClass('text-label');
+			}
+		});
+	 
+		$(this).blur(function(){
+			if(this.value == '') {
+				this.value = $(this).attr('title');
+				$(this).addClass('text-label');
+			}
+		});
+	});
+	
+	/*var clientID = sessionStorage.getItem("clientID");
 	
 	$.ajax({url: global_url+'ajaxfiles/add_new_case.php',
-		//data:{action : 'login', formData : $('#check-user').serialize()}, // Convert a form to a JSON string representation
+		
 		
 		data:{clientID : clientID, type : 'fetch'}, 
 		type: 'get',                   
@@ -99,8 +154,140 @@ $(document).on('pageinit', '#add_new_case', function(){
 			// This callback function will trigger on unsuccessful action                
 			alert('Network error has occurred please try again!');
 		}
-	});  
+	}); */ 
 });
+
+
+$(document).on('click', '#find_inventory', function(){ 
+
+	var val = trim($("#find_inventory_input").val());
+	var clientID = sessionStorage.getItem("clientID");
+	
+	if(val != '')
+	{
+		$("body").addClass('ui-disabled');
+		findinventory_div.remove();
+		$.ajax({url: global_url+'ajaxfiles/findinventory.php',				
+			data:{clientID : clientID, search_text : val}, 
+			type: 'get',                   
+			async: true,
+			beforeSend: function() {
+				$.mobile.loading( "show", {text: "Finding Inventories",textVisible: true,theme: "a",html: ""});			
+			},
+			complete: function() {
+				$.mobile.loading( 'hide' );
+				$("body").removeClass('ui-disabled');
+			},
+			success: function (result) {
+				
+				
+				
+				$('#detail_tbody').html(result);	
+				$( "findinventory_table" ).table( "refresh" );
+				
+				$('#inventoryResult').popup("open")
+				
+				
+				/*var $popUp = $("<div/>").popup({
+					dismissible: false,
+					theme: "c",
+					overlyaTheme: "a",
+					transition: "pop"
+				}).on("popupafterclose", function () {
+					//remove the popup when closing
+					$(this).remove();
+				});
+				
+				//create a message for the popup
+				$("<div/>", {
+					text: result,
+					"data-role": "popup",
+					"data-theme": "c"
+				}).appendTo($popUp);
+				
+				//create a back button
+				$("<a>", {        
+					"data-rel": "back",
+					"data-role": "button",
+					"data-theme": "c",
+					"data-icon": "delete",
+					"data-iconpos": "notext",
+					"class": "ui-btn-right"
+				}).appendTo($popUp);
+			
+				$popUp.popup('open').trigger("create");
+				//$popUp.popup('open');		*/	
+					
+			},
+			error: function (request,error) {
+				// This callback function will trigger on unsuccessful action                
+				alert('Network error has occurred please try again!');
+			}
+		}); 
+	}
+	else
+	{
+		alert('Please enter search criteria.');
+	}
+	
+});
+
+
+$(document).on('click', '#create', function(){ 	
+    //create a div for the popup
+    findinventory_div = $("<div/>").popup({
+        dismissible: false,
+        theme: "c",
+        overlyaTheme: "a",		
+        transition: "pop",
+		style: "padding:10px;"
+    }).on("popupafterclose", function () {
+        //remove the popup when closing
+        $(this).remove();
+    });
+    //create a title for the popup
+    $("<h4/>", {
+        text: "Please enter the Device information"
+    }).appendTo(findinventory_div);
+
+    //create a message for the popup
+    $("<div/>", {
+        text: "Manufacturer, Model, Name and Serial Number OR Exact InventoryID"
+    }).appendTo(findinventory_div);
+
+    //create a form for the pop up
+    $("<form>").append($("<input/>", {
+        type: "text",
+        name: "find_inventory_input",
+		id: "find_inventory_input"        
+    })).appendTo(findinventory_div);
+
+    //Create a submit button(fake)
+    
+	
+    $("<form>").append($("<input/>", {
+        type: "button",
+        name: "find_inventory",
+		id: "find_inventory",
+		value: "Search",
+		"data-theme": "b"
+		
+    })).appendTo(findinventory_div);
+	
+	//create a back button
+    $("<a>", {        
+        "data-rel": "back",
+		"data-role": "button",
+		"data-theme": "c",
+		"data-icon": "delete",
+		"data-iconpos": "notext",
+		"class": "ui-btn-right"
+    }).appendTo(findinventory_div);
+
+    findinventory_div.popup('open').trigger("create");
+    //$popUp.popup('open');
+});
+
 	
 $(document).on('change', '#add_inventoryid', function(){ 	
 	
@@ -139,13 +326,14 @@ $(document).on('pageinit', '#add_new_case', function(){
 				
 				var clientID = sessionStorage.getItem("clientID");
 				var error = '';
-				if(add_inventoryid == 'Enter Name' || add_inventoryid == '0' || subject == 'Case Name' || add_description == 'Description')
+				if(add_inventoryid == 'Inventory ID' || subject == 'Case Name' || add_description == 'Fault Description')
 				{
 					error += 'Please fill all necessary fields\n';
 				}
 				
 				if(error == '')
 				{
+					$("body").addClass('ui-disabled');
 					$.ajax({url: global_url+'ajaxfiles/add_new_case.php',
 						//data:{action : 'login', formData : $('#check-user').serialize()}, // Convert a form to a JSON string representation
 						data:{type : 'save', add_inventoryid : add_inventoryid, add_make_model : add_make_model, add_name : add_name, add_srno : add_srno, subject : subject, add_description : add_description, clientID : clientID, username : username}, 
@@ -163,16 +351,19 @@ $(document).on('pageinit', '#add_new_case', function(){
 							// This callback function will trigger on data sent/received complete
 							//$.mobile.hidePageLoadingMsg(); // This will hide ajax spinner
 							$.mobile.loading( 'hide' );
+							$("body").removeClass('ui-disabled');
 						},
 						success: function (result) {
 							
 							if(result.ret == true)
 							{
 								
-								$('#caseid_div').attr('style', 'display:"";');
+								/*$('#caseid_div').attr('style', 'display:"";');
 								$('#caseid_span').html(result.caseID);
-								//$('#add_inventoryid').val('');
-								//$('#add_inventoryid').text('Select Inventory');
+								
+								$('#add_inventoryid').val('Inventory ID');
+								$('#add_inventoryid').attr('title', 'Inventory ID');								
+								$("#add_inventoryid").addClass('text-label');
 								
 								$('#add_make_model').val('Device Make and Model');
 								$('#add_make_model').attr('title', 'Device Make and Model');								
@@ -190,7 +381,14 @@ $(document).on('pageinit', '#add_new_case', function(){
 								$("#subject").addClass('text-label');
 								
 								$('#add_description').val('Description');					
-								$("#add_description").addClass('text-label');
+								$("#add_description").addClass('text-label');*/
+								
+								$.mobile.changePage('case_detail.html?From=new&ID='+result.caseID, {
+									changeHash: true,
+									dataUrl: "",    //the url fragment that will be displayed for the test.html page
+									transition: "slide"  //if not specified used the default one or the one defined in the default settings
+								});
+								
 							}
 							else
 							{

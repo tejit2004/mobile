@@ -23,6 +23,25 @@ function GetParameterValues(param)
 	}
 }
 
+function isset () {  
+  var a = arguments,
+    l = a.length,
+    i = 0,
+    undef;
+
+  if (l === 0) {
+    throw new Error('Empty isset');
+  }
+
+  while (i !== l) {
+    if (a[i] === undef || a[i] === null) {
+      return false;
+    }
+    i++;
+  }
+  return true;
+}
+
 
 $(function() {
 	var data = localStorage.getItem('username');	
@@ -48,9 +67,9 @@ function do_alert( theflag, thetext )
 		$('#login_alert_box').remove() ;
 
 	if ( theflag )
-		message = "<div id=\"login_alert_box\" class=\"info_good\" \">"+thetext+"</div>" ;
+		message = "<div class=\"outer\"><div id=\"login_alert_box\" class=\"info_good\" \">"+thetext+"</div></div>" ;
 	else
-		message = "<div id=\"login_alert_box\" class=\"info_error\" \">"+thetext+"</div>" ;
+		message = "<div class=\"outer\"><div id=\"login_alert_box\" class=\"info_error\" \">"+thetext+"</div></div>" ;
 
 	$('body').append( message ) ;
 	

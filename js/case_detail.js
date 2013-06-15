@@ -99,7 +99,7 @@ $(document).on('click', '#submit_addnote', function() { // catch the form's subm
 							//$("#locator").dialog("close");
 							//$('.ui-dialog').dialog('close');
 							$('#summary').html(result.summary);					
-							alert('Case updated Successfully');
+							do_alert(0, 'Case updated Successfully');
 							
 						}
 						
@@ -117,7 +117,8 @@ $(document).on('click', '#submit_addnote', function() { // catch the form's subm
 	}
 });
 
-$(document).on('pageinit', '#case_detail', function(){ 
+/// Before it was pageinit
+$(document).on('pageshow', '#case_detail', function(){ 
 
 	$('input[type="text"]').each(function()
 	{ 
@@ -160,9 +161,12 @@ $(document).on('pageinit', '#case_detail', function(){
 	});
 
 	var clientID = sessionStorage.getItem("clientID");
-	CaseID = decodeURIComponent($.urlParam('ID'));
+	var CaseID = decodeURIComponent($.urlParam('ID'));
+	var From = $.urlParam('From');
 	$('.case_id').html(CaseID);
-	$("body").addClass('ui-disabled');
+	
+	//Do not use below as for Add new case transition used pageload
+	//$("body").addClass('ui-disabled');
 	$.ajax({url: global_url+'ajaxfiles/case_detail.php',
 			
 		data:{clientID : clientID, CaseID : CaseID}, 
@@ -173,30 +177,37 @@ $(document).on('pageinit', '#case_detail', function(){
 			// This callback function will trigger before data is sent
 			//$.mobile.showPageLoadingMsg(true); // This will show ajax spinner
 			
-			$.mobile.loading( "show", {text: "Loading Please wait",textVisible: true,theme: "a",html: ""});
+			//$.mobile.loading( "show", {text: "Loading Please wait",textVisible: true,theme: "a",html: ""});
 			
 		},
 		complete: function() {
 			$.mobile.loading( 'hide' );
-			$("body").removeClass('ui-disabled');
+			//$("body").removeClass('ui-disabled');
 		},
 		success: function (result) {									
 			
 			var result_html = '';
 			if(result.ret == true)
 			{
+				
+				if(From == 'new')
+				{
+					do_alert(0, 'Case logged successfully.');
+				}
+				
 				result_html += '<tr><td><b>Case ID : </b></td><td>'+ result.id +'</td></tr><tr><td><b>Status : </b></td><td>'+ result.status +'</td></tr><tr><td><b>Case Name : </b></td><td>'+ result.subject +'</td></tr><tr><td><b>Created By : </b></td><td>'+ result.created_by +'</td></tr><tr><td><b>Created Date : </b></td><td>'+ result.created_date +'</td></tr><tr><td><b>Owner : </b></td><td>'+ result.owner +'</td></tr><tr><td><b>Case Type : </b></td><td>'+ result.case_type +'</td></tr><tr><td><b>Contract : </b></td><td>'+ result.contract +'</td></tr><tr><td><b>Description : </b></td><td>'+ result.desc +'</td></tr>';
 				
 				$('#summary').html(result.summary);
-				/*$( "table#case_detail_table tbody" )
+				$( "table#case_detail_table tbody" )
 				
 				.html( result_html )
 				
 				.closest( "table#case_detail_table" )
-				.table( "refresh" )				*/				
+				.table( "refresh" );
 				
-				$('#detail_tbody').html(result_html);				
-				$( "case_detail_table" ).table( "refresh" );
+				/*$('#detail_tbody').html(result_html);				
+				$( "case_detail_table" ).table( "refresh" );*/
+				
 			}
 			
 			

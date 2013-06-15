@@ -7,8 +7,6 @@
     <script src="jquery/jquery-1.9.1.min.js"></script>    
     <script src="jquery/jquery.mobile-1.3.1.min.js"></script>
     <script src="./js/index.js"></script>
-    <script src="js/check_availability_adsl.js"></script>
-    
     <style>
         .ui-block-a
 		{
@@ -39,24 +37,14 @@
     <div data-role="page" id="adsl_availability">
         <div data-theme="a" data-role="header">    
         	<a data-role="button" data-rel="back" data-icon="arrow-l" href="list.html">Back</a>       
-            <h3>Check FTTC/ADSL Availability</h3>
+            <h3>DSL Availability</h3>
         </div>
 
         <div data-role="content">
 			<form id="adsl_availability" class="ui-body ui-body-c ui-corner-all" data-ajax="true" accept-charset="UTF-8">
-                <fieldset>
-                
-                	<div>
-                        <input type="text" value="" name="name" id="name" title="Enter Name"/>
-                    </div>                                  
+                <fieldset>                
                     <div>
-                        <input type="text" value="" name="company" id="company" title="Enter Company"/>
-                    </div>
-                    <div>
-                        <input type="text" value="" name="telephone" id="telephone" title="Enter Telephone"/>
-                    </div>
-                    <div>
-                        <input type="text" value="" name="email" id="email" title="Enter Email"/>
+                        <input type="text" value="" name="telephone" id="telephone" title="Enter CLI/Telephone"/>
                     </div>
                     <input type="button" data-theme="b" name="submit_adsl" id="submit_adsl" value="Check Availability">
                 </fieldset>
@@ -71,17 +59,17 @@
     <div data-role="page" id="adsl_availability_result" data-add-back-btn="true">
         <div data-theme="a" data-role="header">
             <a data-role="button" data-rel="back" data-icon="arrow-l">Back</a>  
-            <h3>FTTC/ADSL Availability Result</h3>
+            <h3>DSL Availability</h3>
         </div>
 
         <div data-role="content">
 			<div id="adsl_html">
             </div>
-            <div style="padding-top:15px;text-align:right;">
-            	<a href="check_availability_adsl.html" data-transition="slide" data-ajax="false" data-role="button" data-inline="true" data-mini="true" data-icon="arrow-r" data-iconpos="right" class="ui-btn-left ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-left ui-btn-up-b" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span"><span class="ui-btn-inner"><span class="ui-btn-text">Check Again</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></a>
+            <div>            	
+                <a href="check_availability_adsl.html" data-role="button" data-theme="b" data-ajax="false" rel="external">Check Again</a>
             </div>
-            <div style="padding-top:15px;text-align:right;">
-            	<a href="check_availability.html" data-transition="slide" data-ajax="false" data-role="button" data-inline="true" data-mini="true" data-icon="arrow-r" data-iconpos="right" class="ui-btn-left ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-left ui-btn-up-b" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span"><span class="ui-btn-inner"><span class="ui-btn-text">Check EFM Availability</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></a>
+            <div>                
+                <a href="check_availability.html" data-role="button" data-theme="b" data-ajax="false" rel="external">Check EFM Availability</a>
             </div>
         </div>
 
@@ -91,3 +79,4 @@
     </div>     
 </body>
 </html>
+<script src="js/check_availability_adsl.js"></script>

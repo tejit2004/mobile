@@ -21,22 +21,19 @@ $(document).on('pagebeforeshow', '#adsl_availability', function(){
 	});
 	
 	$(document).on('click', '#submit_adsl', function() { // catch the form's submit event
-        if($('#name').val().length > 0 && $('#company').val().length > 0 && $('#telephone').val().length > 0 && $('#email').val().length > 0){
+        if($('#telephone').val().length > 0){
             
-				var name = $('#name').val();
-				var company = $('#company').val();
-				var telephone = $('#telephone').val();
-				var email = $('#email').val();
 				
+				var telephone = $('#telephone').val();
 				var cli_pattern = /^([0-9]{10,11})$/;
 				var error = '';
 				
-				if(name == 'Enter Name' || company == 'Enter Company' || telephone == 'Enter Telephone' || email == 'Enter Email')
+				if(telephone == 'Enter CLI/Telephone')
 				{
 					error += 'Please fill all necessary fields\n';
 				}
 				
-				if(telephone != '' && telephone != 'Enter Telephone' && !telephone.match(cli_pattern))
+				else if(telephone != '' && !telephone.match(cli_pattern))
 				{					
 					error += 'Please Enter Proper Telephone number\n';
 				}				
@@ -46,7 +43,7 @@ $(document).on('pagebeforeshow', '#adsl_availability', function(){
 					$("body").addClass('ui-disabled');
 					$.ajax({url: global_url+'ajaxfiles/check_adsl_availability.php',
 						//data:{action : 'login', formData : $('#check-user').serialize()}, // Convert a form to a JSON string representation
-						data:{name : name, company : company, telephone : telephone, email : email}, 
+						data:{telephone : telephone}, 
 						type: 'post',                   
 						async: true,
 						beforeSend: function() {

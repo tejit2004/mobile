@@ -26,16 +26,16 @@ $(document).on('pageinit', '#view_services', function(){
 		var clientID = sessionStorage.getItem("clientID");
 		var type = $('#type').val();
 		var srno = $('#srno').val();
-		var inventoryid = $('#inventoryid').val();
+		var name = $('#name').val();
 		
 		if(type != '')
 		{
-			if(inventoryid == 'Inventory ID')
+			if(name == 'Name or Order Ref')
 			{
-				inventoryid = '';
+				name = '';
 			}
 			
-			if(srno == 'Sr.No/CLI/IP')
+			if(srno == 'Sr.No or CLI or IP')
 			{
 				srno = '';
 			}
@@ -43,7 +43,7 @@ $(document).on('pageinit', '#view_services', function(){
 			$("body").addClass('ui-disabled');
 			$.ajax({url: global_url + 'ajaxfiles/view_services.php',
 				//data:{action : 'login', formData : $('#check-user').serialize()}, // Convert a form to a JSON string representation
-				data:{clientID : clientID, inventoryid : inventoryid, srno : srno, type : type}, 
+				data:{clientID : clientID, name : name, srno : srno, type : type}, 
 				type: 'post',				
 				async: true,
 				beforeSend: function() {

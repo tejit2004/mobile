@@ -27,6 +27,7 @@ $(document).on('pagebeforeshow', '#efm_availability', function(){
 				
 				if(error == '')
 				{
+					$("body").addClass('ui-disabled');
 					$.ajax({url: global_url+'ajaxfiles/check_efm_availability.php',
 						//data:{action : 'login', formData : $('#check-user').serialize()}, // Convert a form to a JSON string representation
 						data:{efm_cli : efm_cli, efm_postcode : efm_postcode}, 
@@ -43,6 +44,7 @@ $(document).on('pagebeforeshow', '#efm_availability', function(){
 							// This callback function will trigger on data sent/received complete
 							//$.mobile.hidePageLoadingMsg(); // This will hide ajax spinner
 							$.mobile.loading( 'hide' );
+							$("body").removeClass('ui-disabled');
 						},
 						success: function (result) {
 								$.mobile.changePage("#efm_availability_result");								

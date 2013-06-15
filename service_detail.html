@@ -25,6 +25,7 @@ body {
     <h3>Service Detail</h3>    
   </div>
   <div data-role="content" class="ui-content">
+  <form class="ui-body ui-body-c ui-corner-all" accept-charset="UTF-8">
     <div data-role="collapsible" data-content-theme="c" data-collapsed="false">
       <h3>Service Detail</h3>
       <span id="gItemID" style="display:none;"></span><span id="CliNo" style="display:none;"></span>
@@ -32,6 +33,11 @@ body {
       <span id="SupplierID" style="display:none;"></span>
       <span id="TailProviderID" style="display:none;"></span>
       <span id="OrderStage" style="display:none;"></span>
+      
+      <input type="hidden" name="manufacturer" id="manufacturer" value="" />
+      <input type="hidden" name="model" id="model" value="" />
+      <input type="hidden" name="name" id="name" value="" />
+      <input type="hidden" name="srno" id="srno" value="" />      
       
       <table id="service_detail_table" class="ui-responsive table-stroke ui-table ui-body-d table-stripe">        
         <tbody id="detail_tbody">
@@ -41,12 +47,15 @@ body {
         </tbody>
       </table>
     </div>
-    
+  </form>  
       
   <div data-role="collapsible" data-content-theme="c" id="tasks">
        <h3>Tasks</h3>
        <ul data-role="listview" data-mini="true">
-            <li id="dslam_status" data-mini="true"><a rel="external">DSLAM Status</a></li>                 
+            <li id="raise_case" data-mini="true"><a rel="external">Raise a new case</a></li>
+            <li id="dslam_status" data-mini="true"><a rel="external">DSLAM Status</a></li>    
+            <li id="line_usage" data-mini="true"><a rel="external">Line Usage</a></li>   
+                          
             <!--<li><a href="check_availability.html" id="efm" data-transition="slide" data-ajax="false">Check EFM Availability</a></li>
             <li data-role="list-divider" role="heading" class="ui-li ui-li-divider ui-bar-d">Support</li>
             <li><a href="view_services.html" data-ajax="false">View Services</a></li>-->

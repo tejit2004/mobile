@@ -116,44 +116,46 @@ $(document).on('pagebeforeshow', '#login', function(){
                     }
                 });                   
         } else {
-            //do_alert(0,'Please fill all necessary fields');
-			alert('Please fill all necessary fields');
+            do_alert(0,'Please fill all necessary fields.');
+			//alert('Please fill all necessary fields');
         }           
             return false; // cancel original event to prevent form submitting
         });    
 		
-		$(document).on('click', '#logout', function(){ 	
-	
-		$.ajax({url: global_url+'ajaxfiles/check.php',
-				data:{action : 'logout'}, // Convert a form to a JSON string representation
-				//data:{action : 'login', username : username, password : password}, 
-				type: 'get',                   
-				async: true,
-				beforeSend: function() {
-					// This callback function will trigger before data is sent
-					$.mobile.showPageLoadingMsg(true); // This will show ajax spinner
-				},
-				complete: function() {
-					// This callback function will trigger on data sent/received complete
-					$.mobile.hidePageLoadingMsg(); // This will hide ajax spinner
-				},
-				success: function (result) {
-						resultObject.formSubmitionResult = result;
-						localStorage.clear();
-						sessionStorage.clear();	
-						//$.mobile.changePage("index.html");															
-						$.mobile.changePage('index.html', {
-									changeHash: true,
-									dataUrl: "",    //the url fragment that will be displayed for the test.html page
-									transition: "flip"  //if not specified used the default one or the one defined in the default settings
-									});
-				},
-				error: function (request,error) {
-					// This callback function will trigger on unsuccessful action                
-					alert('Network error has occurred please try again!');
-				}
-			}); 
-		  
+		$(document).on('click', '#logout', function()
+		{		
+			if (confirm('Are you sure you want to logout?')) 
+			{
+				$.ajax({url: global_url+'ajaxfiles/check.php',
+						data:{action : 'logout'}, // Convert a form to a JSON string representation
+						//data:{action : 'login', username : username, password : password}, 
+						type: 'get',                   
+						async: true,
+						beforeSend: function() {
+							// This callback function will trigger before data is sent
+							$.mobile.showPageLoadingMsg(true); // This will show ajax spinner
+						},
+						complete: function() {
+							// This callback function will trigger on data sent/received complete
+							$.mobile.hidePageLoadingMsg(); // This will hide ajax spinner
+						},
+						success: function (result) {
+								resultObject.formSubmitionResult = result;
+								localStorage.clear();
+								sessionStorage.clear();	
+								//$.mobile.changePage("index.html");															
+								$.mobile.changePage('index.html', {
+											changeHash: true,
+											dataUrl: "",    //the url fragment that will be displayed for the test.html page
+											transition: "flip"  //if not specified used the default one or the one defined in the default settings
+											});
+						},
+						error: function (request,error) {
+							// This callback function will trigger on unsuccessful action                
+							alert('Network error has occurred please try again!');
+						}
+					}); 
+			}
 	});	
 	
 	$(document).on('click', '#view_services', function()
@@ -184,38 +186,40 @@ $(document).on('pagebeforeshow', '#login', function(){
 });
 
 
-$(document).on('click', '#logout', function(){ 	
-	
-	$.ajax({url: global_url+'ajaxfiles/check.php',
-			data:{action : 'logout'}, // Convert a form to a JSON string representation
-			//data:{action : 'login', username : username, password : password}, 
-			type: 'get',                   
-			async: true,
-			beforeSend: function() {
-				// This callback function will trigger before data is sent
-				$.mobile.showPageLoadingMsg(true); // This will show ajax spinner
-			},
-			complete: function() {
-				// This callback function will trigger on data sent/received complete
-				$.mobile.hidePageLoadingMsg(); // This will hide ajax spinner
-			},
-			success: function (result) {
-					resultObject.formSubmitionResult = result;
-					localStorage.clear();
-					sessionStorage.clear();	
-					//$.mobile.changePage("index.html");															
-					$.mobile.changePage('index.html', {
-								changeHash: true,
-								dataUrl: "",    //the url fragment that will be displayed for the test.html page
-								transition: "flip"  //if not specified used the default one or the one defined in the default settings
-								});
-			},
-			error: function (request,error) {
-				// This callback function will trigger on unsuccessful action                
-				alert('Network error has occurred please try again!');
-			}
-		}); 
-	  
+$(document).on('click', '#logout', function()
+{ 	
+	if (confirm('Are you sure you want to logout?')) 
+	{
+		$.ajax({url: global_url+'ajaxfiles/check.php',
+				data:{action : 'logout'}, // Convert a form to a JSON string representation
+				//data:{action : 'login', username : username, password : password}, 
+				type: 'get',                   
+				async: true,
+				beforeSend: function() {
+					// This callback function will trigger before data is sent
+					$.mobile.showPageLoadingMsg(true); // This will show ajax spinner
+				},
+				complete: function() {
+					// This callback function will trigger on data sent/received complete
+					$.mobile.hidePageLoadingMsg(); // This will hide ajax spinner
+				},
+				success: function (result) {
+						resultObject.formSubmitionResult = result;
+						localStorage.clear();
+						sessionStorage.clear();	
+						//$.mobile.changePage("index.html");															
+						$.mobile.changePage('index.html', {
+									changeHash: true,
+									dataUrl: "",    //the url fragment that will be displayed for the test.html page
+									transition: "flip"  //if not specified used the default one or the one defined in the default settings
+									});
+				},
+				error: function (request,error) {
+					// This callback function will trigger on unsuccessful action                
+					alert('Network error has occurred please try again!');
+				}
+			}); 
+	}
 });	
 	
 	

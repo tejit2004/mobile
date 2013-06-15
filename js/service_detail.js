@@ -5,7 +5,8 @@ $(document).on('pagebeforeshow', '#service_detail', function(){
 	
 	if(type != 'Connection')
 	{
-		$('#tasks').attr('style', 'display:none;');
+		$('#dslam_status').attr('style', 'display:none;');
+		$('#line_usage').attr('style', 'display:none;');
 	}
 	
 	$("body").addClass('ui-disabled');
@@ -41,6 +42,15 @@ $(document).on('pagebeforeshow', '#service_detail', function(){
 				$('#SupplierID').html(result.supplierID);
 				$('#TailProviderID').html(result.tailproviderID);
 				$('#OrderStage').html(result.orderStage);
+				
+				$('#manufacturer').val(result.manufacturer);
+				$('#model').val(result.model);
+				$('#name').val(result.name);
+				$('#srno').val(result.tel_no);
+				if(result.usageCap == '')
+				{
+					$('#line_usage').attr('style', 'display:none;');
+				}
 				
 				$('#detail_tbody').html(result_html);				
 				$( "service_detail_table" ).table( "refresh" );
@@ -89,4 +99,23 @@ $(document).on('click', '#dslam_status', function()
 	{
 		$.mobile.changePage( "dslam_status.html?gItemID="+gItemID+"&CliNo="+CliNo, { transition: "slide"}, true, true)						
 	}
+});
+
+$(document).on('click', '#line_usage', function()
+{	
+	var gItemID = $('#gItemID').html();
+	//$.mobile.changePage( "line_usage.html?gItemID="+gItemID, { transition: "slide"}, true, true)							
+	document.location.href = "line_usage.html?gItemID="+gItemID;
+});
+
+$(document).on('click', '#raise_case', function()
+{	
+	var InventoryID = decodeURIComponent(GetParameterValues('ID'));	
+	var manufacturer = $('#manufacturer').val();
+	var model = $('#model').val();
+	var name = $('#name').val();
+	var srno = $('#srno').val();	
+	
+	document.location.href = "raise_new_case.html?ID="+InventoryID+"&manufacturer="+manufacturer+"&model="+model+"&name="+name+"&srno="+srno;
+	//$.mobile.changePage("raise_new_case.html?ID="+InventoryID+"&manufacturer="+manufacturer+"&model="+model+"&name="+name+"&srno="+srno, { transition: "slide"}, true, true)	
 });
