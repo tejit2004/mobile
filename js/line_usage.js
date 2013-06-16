@@ -30,6 +30,9 @@ $(document).on('pageshow', '#line_usage', function(){
 				$('#monthly_data').html(result.monthly_data);
 				$('#monthly_dates').html(result.monthly_dates);
 				
+				$('#daily_data').html(result.daily_data);
+				$('#daily_dates').html(result.daily_dates);
+				
 				$('#daily_detail_tbody').html(result.daily_table);				
 				$( "daily_table" ).table( "refresh" );
 				
@@ -68,8 +71,51 @@ $(document).on('click', '#graph', function()
 	document.getElementById('result_daily').style.display = 'none';
 	document.getElementById('result_graph').style.display = '';
 	
+	var daily_data = $('#daily_data').html();
+	var daily_dates = $('#daily_dates').html();
+	
+	var data_daily = daily_data.split(',');
+	var dates_daily = daily_dates.split(',');
+	
+	seriesData_daily = new Array();
+	
+	for (i=0; i<data_daily.length; i++) 
+	{
+    	seriesData_daily.push(parseFloat(data_daily[i]));
+	}
+	
+	DrawGraph(dates_daily, seriesData_daily, 'daily');
+	
+});
+
+$(document).on('click', '#daily_graph', function()
+{
+	document.getElementById('result_graph_monthly').style.display = 'none';
+	document.getElementById('result_graph_daily').style.display = '';
+	
+	var daily_data = $('#daily_data').html();
+	var daily_dates = $('#daily_dates').html();
+	
+	var data_daily = daily_data.split(',');
+	var dates_daily = daily_dates.split(',');
+	
+	seriesData_daily = new Array();
+	
+	for (i=0; i<data_daily.length; i++) 
+	{
+    	seriesData_daily.push(parseFloat(data_daily[i]));
+	}
+	
+	DrawGraph(dates_daily, seriesData_daily, 'daily');	
+});
+
+$(document).on('click', '#monthly_graph', function()
+{
+	document.getElementById('result_graph_monthly').style.display = '';
+	document.getElementById('result_graph_daily').style.display = 'none';
+	
 	var monthly_data = $('#monthly_data').html();
-	var monthly_dates = $('#monthly_dates').html();
+	var monthly_dates = $('#monthly_dates').html();	
 	
 	var data = monthly_data.split(',');
 	var dates = monthly_dates.split(',');
@@ -81,12 +127,28 @@ $(document).on('click', '#graph', function()
     	seriesData.push(parseFloat(data[i]));
 	}
 	
-	$('#result_graph').highcharts({
+	DrawGraph(dates, seriesData, 'monthly');
+});
+
+function DrawGraph(dates, seriesData, type)
+{
+	if(type == 'daily')
+	{
+		var id = '#result_graph_daily';
+		var text = 'Daily Usage';
+	}
+	else
+	{
+		var id = '#result_graph_monthly';
+		var text = 'Monthly Usage';
+	}
+	
+	$(id).highcharts({
         chart: {
             type: 'bar'
         },
 		title: {
-			text: 'Monthly Usage',
+			text: text,
 			x: -20 //center
 		},
         
@@ -124,6 +186,4 @@ $(document).on('click', '#graph', function()
             name: 'Usage data'
         }]
     });
-	
-	
-});
+}
