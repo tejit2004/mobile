@@ -15,8 +15,8 @@ $(document).on('pagebeforeshow', '#login', function(){
 			$.ajax({url: global_url + 'ajaxfiles/check.php',
 				//data:{action : 'login', formData : $('#check-user').serialize()}, // Convert a form to a JSON string representation
 				data:{action : 'login', username : username, password : password}, 
-				type: 'post',
-				dataType: 'json',	                   
+				type: 'get',
+				dataType: 'html',	                   
 				async: true,
 				beforeSend: function() {
 					// This callback function will trigger before data is sent
