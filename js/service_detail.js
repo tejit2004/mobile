@@ -1,4 +1,4 @@
-$(document).on('pagebeforeshow', '#service_detail', function(){ 
+$(document).on('pageshow', '#service_detail', function(){ 
 	var clientID = sessionStorage.getItem("clientID");
 	var InventoryID = decodeURIComponent(GetParameterValues('ID'));
 	var type = decodeURIComponent(GetParameterValues('type'));
@@ -104,7 +104,7 @@ $(document).on('click', '#dslam_status', function()
 $(document).on('click', '#line_usage', function()
 {	
 	var gItemID = $('#gItemID').html();
-	//$.mobile.changePage( "line_usage.html?gItemID="+gItemID, { transition: "slide"}, true, true)							
+	//$.mobile.changePage( "line_usage.html?gItemID="+gItemID, { transition: "slide"}, true, true)		
 	document.location.href = "line_usage.html?gItemID="+gItemID;
 });
 

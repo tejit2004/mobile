@@ -151,6 +151,10 @@ function DrawGraph(dates, seriesData, type)
 			text: text,
 			x: -20 //center
 		},
+		
+		/*subtitle: {
+            text: 'Last 30 days only'            
+        },*/
         
 		xAxis: {
 			categories: dates
@@ -163,7 +167,7 @@ function DrawGraph(dates, seriesData, type)
 			}]
 		},		
 		
-        legend: {
+        /*legend: {
             layout: 'vertical',
             floating: true,
             backgroundColor: '#FFFFFF',
@@ -171,7 +175,7 @@ function DrawGraph(dates, seriesData, type)
             verticalAlign: 'top',
             y: 60,
             x: -60
-        },
+        },*/
         tooltip: {
             formatter: function() {
                 return '<b>'+ this.series.name +'</b><br/>'+

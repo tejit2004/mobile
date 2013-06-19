@@ -15,7 +15,7 @@ body {
 </head>
 <body>
 <div data-role="page" id="dslam_status_detail" data-transition="slide">
-  <div data-theme="a" data-role="header"> 
+  <div data-theme="a" data-role="header" data-position="fixed"> 
   	<a data-role="button" data-rel="back" data-icon="arrow-l" href="list.html">Back</a>
     <h3>DSLAM Status</h3>   
   </div>
@@ -25,15 +25,15 @@ body {
       <table data-mode="reflow" id="dslam_table" class="ui-responsive table-stroke ui-table ui-body-d table-stripe">
         <tbody id="dslam_detail_tbody">
           <tr>
-            <td colspan="2" style="text-align:center;"><img src="images/ajax-loader.gif"></td>
+            <td colspan="2" style="text-align:center;">&nbsp;<!--<img src="images/ajax-loader.gif">--></td>
           </tr>
         </tbody>
       </table>
     </div>
   
-<div data-theme="a" data-role="footer" data-position="fixed">
-			<h3>2013 Cerberus Networks</h3>
-        </div>
+	<div data-theme="a" data-role="footer" data-position="fixed">
+      <h3>2013 Cerberus Networks</h3>
+    </div>
   
 </div>
 </body>

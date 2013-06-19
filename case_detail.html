@@ -21,13 +21,11 @@ body {
 </head>
 <body>
 <div data-role="page" id="case_detail" data-transition="slide">
-  <div data-theme="a" data-role="header"> 
+  <div data-theme="a" data-role="header" data-position="fixed"> 
   	<a data-role="button" data-rel="back" data-icon="arrow-l" href="list.html">Back</a>
     <h3>Case Detail</h3>
-    <!--<a id="add_note" data-rel="dialog">Add Notes</a>-->
-    
-     <a href="#popupLogin" data-rel="popup" data-position-to="window" data-role="button" data-inline="true">Update Case</a>
-    
+    <!--<a id="add_note" data-rel="dialog">Add Notes</a>-->    
+     <a href="#popupLogin" data-rel="popup" data-position-to="window" data-role="button" data-inline="true">Update Case</a>    
   </div>
   <div data-role="content" class="ui-content">
     <div data-role="collapsible" data-content-theme="c" data-collapsed="false">
@@ -43,35 +41,35 @@ body {
     </div>   
     
       
-  <div data-role="collapsible" data-content-theme="c">
+  	<div data-role="collapsible" data-content-theme="c">
        <h3>Comments and Actions</h3>
        <p id="summary"><img src="images/ajax-loader.gif"></p>
     </div>
     
    
 
-		<div data-role="popup" id="popupLogin" data-theme="c" class="ui-content" data-overlay-theme="a">
-			
-            <a href="#" data-rel="back" data-role="button" data-theme="c" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+    <div data-role="popup" id="popupLogin" data-theme="c" class="ui-content" data-overlay-theme="a">
+        
+        <a href="#" data-rel="back" data-role="button" data-theme="c" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+        
+        <form id="update_case_form" class="ui-body ui-body-a ui-corner-all" accept-charset="UTF-8" data-theme="c">
             
-            <form id="update_case_form" class="ui-body ui-body-a ui-corner-all" accept-charset="UTF-8" data-theme="c">
-            	
-                <fieldset>                
-                	<div>
-                        <input type="text" value="subject" name="subject" id="subject" title="Subject" />
-                    </div>
-                    <div>
-                        <textarea name="comment" id="comment" title="Comment"></textarea>
-                    </div>                    
-                    <input type="button" data-theme="b" name="submit_addnote" id="submit_addnote" value="Submit">
-                </fieldset>
-            </form> 
-		</div>
+            <fieldset>                
+                <div>
+                    <input type="text" value="subject" name="subject" id="subject" title="Subject" />
+                </div>
+                <div>
+                    <textarea name="comment" id="comment" title="Comment"></textarea>
+                </div>                    
+                <input type="button" data-theme="b" name="submit_addnote" id="submit_addnote" value="Submit">
+            </fieldset>
+        </form> 
+    </div>
     
   
-<div data-theme="a" data-role="footer" data-position="fixed">
-			<h3>2013 Cerberus Networks</h3>
-        </div>
+	<div data-theme="a" data-role="footer" data-position="fixed">
+        <h3>2013 Cerberus Networks</h3>
+    </div>
   
 </div>
 </body>

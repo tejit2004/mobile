@@ -1,11 +1,10 @@
-$(document).on('pagebeforeshow', '#dslam_status_detail', function(){ 
-	var gItemID = decodeURIComponent($.urlParam('gItemID'));
-	
-	//var CliNo = decodeURIComponent($.urlParam('CliNo'));
+$(document).on('pageshow', '#dslam_status_detail', function(){ 
+	var gItemID = decodeURIComponent($.urlParam('gItemID'));	
+	var CliNo = decodeURIComponent($.urlParam('CliNo'));
 	$("body").addClass('ui-disabled');
 	$.ajax({url: global_url+'ajaxfiles/dslam_status.php',
 			
-		data:{gItemID : gItemID/*, CliNo : CliNo*/}, 
+		data:{gItemID : gItemID, CliNo : CliNo}, 
 		type: 'get',                   
 		async: true,
 		dataType: 'json',	 
