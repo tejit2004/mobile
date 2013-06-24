@@ -31,7 +31,9 @@ $(document).on('pagebeforeshow', '#view_cases', function(){
             .closest( "table#table-column-toggle" )
             .table( "refresh" )
             // Trigger if the new injected markup contain links or buttons that need to be enhanced
-            //.trigger( "create" );
+            .trigger( "create" );
+            
+            eval(document.getElementById("runscript").innerHTML);
 			
 		},
 		error: function (request,error) {
