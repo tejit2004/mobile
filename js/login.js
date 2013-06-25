@@ -15,7 +15,7 @@ $(document).on('pagebeforeshow', '#login', function(){
 			$.ajax({url: global_url + 'ajaxfiles/check.php',
 				//data:{action : 'login', formData : $('#check-user').serialize()}, // Convert a form to a JSON string representation
 				data:{action : 'login', username : username, password : password}, 
-				type: 'get',
+				type: 'post',
 				dataType: 'jsonp',	                   
 				async: true,
 				beforeSend: function() {
@@ -71,7 +71,7 @@ $(document).on('pagebeforeshow', '#login', function(){
 				$.ajax({url: global_url + 'ajaxfiles/check.php',
                     //data:{action : 'login', formData : $('#check-user').serialize()}, // Convert a form to a JSON string representation
 					data:{action : 'login', username : username, password : password}, 
-                    type: 'get',
+                    type: 'post',
 					dataType: 'jsonp',	                   
                     async: true,
                     beforeSend: function() {
