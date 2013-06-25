@@ -28,6 +28,7 @@ $(document).on('pageshow', '#line_usage', function(){
 				//alert(result.daily_table)
 				
 				$('#monthly_data').html(result.monthly_data);
+				$('#monthly_overusage_data').html(result.monthly_overusage_data);				
 				$('#monthly_dates').html(result.monthly_dates);
 				
 				$('#daily_data').html(result.daily_data);
@@ -84,7 +85,7 @@ $(document).on('click', '#graph', function()
     	seriesData_daily.push(parseFloat(data_daily[i]));
 	}
 	
-	DrawGraph(dates_daily, seriesData_daily, 'daily');
+	DrawDailyGraph(dates_daily, seriesData_daily, 'daily');
 	
 });
 
@@ -106,7 +107,7 @@ $(document).on('click', '#daily_graph', function()
     	seriesData_daily.push(parseFloat(data_daily[i]));
 	}
 	
-	DrawGraph(dates_daily, seriesData_daily, 'daily');	
+	DrawDailyGraph(dates_daily, seriesData_daily);	
 });
 
 $(document).on('click', '#monthly_graph', function()
@@ -116,78 +117,109 @@ $(document).on('click', '#monthly_graph', function()
 	
 	var monthly_data = $('#monthly_data').html();
 	var monthly_dates = $('#monthly_dates').html();	
+	var monthly_overusage_data = $('#monthly_overusage_data').html();
 	
 	var data = monthly_data.split(',');
 	var dates = monthly_dates.split(',');
+	var overusge_data = monthly_overusage_data.split(',');
 	
 	seriesData = new Array();
+	overusageData = new Array();
 	
 	for (i=0; i<data.length; i++) 
 	{
     	seriesData.push(parseFloat(data[i]));
 	}
 	
-	DrawGraph(dates, seriesData, 'monthly');
-});
-
-function DrawGraph(dates, seriesData, type)
-{
-	if(type == 'daily')
+	for (i=0; i<overusge_data.length; i++) 
 	{
-		var id = '#result_graph_daily';
-		var text = 'Daily Usage';
-	}
-	else
-	{
-		var id = '#result_graph_monthly';
-		var text = 'Monthly Usage';
+    	overusageData.push(parseFloat(overusge_data[i]));
 	}
 	
-	$(id).highcharts({
+	DrawMonthlyGraph(dates, seriesData, overusageData);
+});
+
+function DrawMonthlyGraph(dates, seriesData, overusageData)
+{
+	$('#result_graph_monthly').highcharts({
         chart: {
-            type: 'bar'
-        },
+                type: 'bar'
+            },
 		title: {
-			text: text,
-			x: -20 //center
+			text: 'Monthly Usage'
 		},
-		
-		/*subtitle: {
-            text: 'Last 30 days only'            
-        },*/
-        
+		credits: {
+            enabled: false
+        },
+		colors: [		   
+		   '#910000',		   
+		   '#2f7ed8'		   
+		],
 		xAxis: {
 			categories: dates
 		},
 		yAxis: {
-			plotLines: [{
-				value: 0,
-				width: 1,
-				color: '#808080'
-			}]
-		},		
-		
-        /*legend: {
-            layout: 'vertical',
-            floating: true,
-            backgroundColor: '#FFFFFF',
-            align: 'right',
-            verticalAlign: 'top',
-            y: 60,
-            x: -60
-        },*/
-        tooltip: {
-            formatter: function() {
-                return '<b>'+ this.series.name +'</b><br/>'+
-                    this.x +': '+ this.y;
-            }
-        },
+			min: 0,
+			title: {
+				text: 'Value'
+			}
+		},
+		legend: {
+			backgroundColor: '#FFFFFF',
+			reversed: true
+		},
+		plotOptions: {
+			series: {
+				stacking: 'normal'
+			}
+		},
+			series: [{
+			name: 'Overusage',
+			data: overusageData
+		},{
+			name: 'Usage Data',
+			data: seriesData
+		}]
+    });	
+}
+
+function DrawDailyGraph(dates, seriesData)
+{
+	$('#result_graph_daily').highcharts({
+        chart: {
+                type: 'bar'
+            },
+		title: {
+			text: 'Daily Usage'
+		},
 		credits: {
-		enabled: false
-	  },
-        series: [{
-            data: seriesData,
-            name: 'Usage data'
-        }]
-    });
+            enabled: false
+        },
+		colors: [		   
+		   '#2f7ed8',
+		   '#910000'		   
+		],
+		xAxis: {
+			categories: dates
+		},
+		yAxis: {
+			min: 0,
+			title: {
+				text: 'Value'
+			}
+		},
+		legend: {
+			backgroundColor: '#FFFFFF',
+			reversed: true
+		},
+		plotOptions: {
+			series: {
+				stacking: 'normal'
+			}
+		},
+		series: [{
+			name: 'Usage Data',
+			data: seriesData			
+		}]
+    });	
 }
