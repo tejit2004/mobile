@@ -195,7 +195,7 @@ $(document).on('pageshow', '#case_detail', function(){
 					do_alert(0, 'Case logged successfully.');
 				}
 				
-				result_html += '<tr><td><b>Case ID : </b></td><td>'+ result.id +'</td></tr><tr><td><b>Status : </b></td><td>'+ result.status +'</td></tr><tr><td><b>Case Name : </b></td><td>'+ result.subject +'</td></tr><tr><td><b>Created By : </b></td><td>'+ result.created_by +'</td></tr><tr><td><b>Created Date : </b></td><td>'+ result.created_date +'</td></tr><tr><td><b>Owner : </b></td><td>'+ result.owner +'</td></tr><tr><td><b>Case Type : </b></td><td>'+ result.case_type +'</td></tr><tr><td><b>Contract : </b></td><td>'+ result.contract +'</td></tr><tr><td><b>Description : </b></td><td>'+ result.desc +'</td></tr>';
+				result_html += '<tr><td width="30%"><b>Case ID</b></td><td>'+ result.id +'</td></tr><tr><td><b>Status</b></td><td>'+ result.status +'</td></tr><tr><td><b>Case Name</b></td><td>'+ result.subject +'</td></tr><tr><td><b>Created By</b></td><td>'+ result.created_by +'</td></tr><tr><td><b>Created Date</b></td><td>'+ result.created_date +'</td></tr><tr><td><b>Owner</b></td><td>'+ result.owner +'</td></tr><tr><td><b>Case Type</b></td><td>'+ result.case_type +'</td></tr><tr><td><b>Contract</b></td><td>'+ result.contract +'</td></tr><tr><td><b>Description</b></td><td>'+ result.desc +'</td></tr>';
 				
 				$('#summary').html(result.summary);
 				$( "table#case_detail_table tbody" )
