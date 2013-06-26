@@ -221,7 +221,7 @@ $(document).on('click', '#find_inventory', function(){
 			},
 			error: function (request,error) {
 				// This callback function will trigger on unsuccessful action                
-				alert('Network error has occurred please try again!');
+				alert(global_errormsg);
 			}
 		}); 
 	}
@@ -399,7 +399,7 @@ $(document).on('pageinit', '#add_new_case', function(){
 						},
 						error: function (request,error) {
 							// This callback function will trigger on unsuccessful action                
-							alert('Network error has occurred please try again!');
+							alert(global_errormsg);
 						}
 					});  
 				}

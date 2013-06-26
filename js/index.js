@@ -1,4 +1,5 @@
 var global_url = 'https://nc2.cerberusnetworks.co.uk/mobile/';
+var global_errormsg = 'There has been some expected error.Please tray again later.'
 
 function trim(stringToTrim) {
 	return stringToTrim.replace(/^\s+|\s+$/g,"");

@@ -52,7 +52,7 @@ $(document).on('pagebeforeshow', '#efm_availability', function(){
 						},
 						error: function (request,error) {
 							// This callback function will trigger on unsuccessful action                
-							alert('Network error has occurred please try again!');
+							alert(global_errormsg);
 						}
 					});  
 				}

@@ -47,7 +47,7 @@ $(document).on('pageshow', '#line_usage', function(){
 			}	
 		},
 		error: function (request,error) {
-			alert('Network error has occurred please try again!');
+			alert(global_errormsg);
 		}
 	});  
 });

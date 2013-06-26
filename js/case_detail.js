@@ -106,7 +106,7 @@ $(document).on('click', '#submit_addnote', function() { // catch the form's subm
 				},
 				error: function (request,error) {
 					// This callback function will trigger on unsuccessful action                
-					alert('Network error has occurred please try again!');
+					alert(global_errormsg);
 				}
 			});
 		}
@@ -217,7 +217,7 @@ $(document).on('pageshow', '#case_detail', function(){
 		},
 		error: function (request,error) {
 			// This callback function will trigger on unsuccessful action                
-			alert('Network error has occurred please try again!');
+			alert(global_errormsg);
 		}
 	});  
 });
