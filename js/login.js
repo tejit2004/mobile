@@ -16,7 +16,7 @@ $(document).on('pagebeforeshow', '#login', function(){
 				//data:{action : 'login', formData : $('#check-user').serialize()}, // Convert a form to a JSON string representation
 				data:{action : 'login', username : username, password : password}, 
 				type: 'post',
-				dataType: 'jsonp',	                   
+				dataType: 'json',	                   
 				async: true,
 				beforeSend: function() {
 					// This callback function will trigger before data is sent
@@ -72,7 +72,7 @@ $(document).on('pagebeforeshow', '#login', function(){
                     //data:{action : 'login', formData : $('#check-user').serialize()}, // Convert a form to a JSON string representation
 					data:{action : 'login', username : username, password : password}, 
                     type: 'post',
-					dataType: 'jsonp',	                   
+					dataType: 'json',	                   
                     async: true,
                     beforeSend: function() {
                         // This callback function will trigger before data is sent
@@ -130,7 +130,7 @@ $(document).on('pagebeforeshow', '#login', function(){
 						data:{action : 'logout'}, // Convert a form to a JSON string representation
 						//data:{action : 'login', username : username, password : password}, 
 						type: 'get',
-						dataType:'jsonp',
+						dataType:'json',
 						async: true,
 						beforeSend: function() {
 							// This callback function will trigger before data is sent
@@ -195,7 +195,7 @@ $(document).on('click', '#logout', function()
 				data:{action : 'logout'}, // Convert a form to a JSON string representation
 				//data:{action : 'login', username : username, password : password}, 
 				type: 'get',
-				dataType:'jsonp',
+				dataType:'json',
 				async: true,
 				beforeSend: function() {
 					// This callback function will trigger before data is sent
