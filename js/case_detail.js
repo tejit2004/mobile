@@ -106,14 +106,14 @@ $(document).on('click', '#submit_addnote', function() { // catch the form's subm
 				},
 				error: function (request,error) {
 					// This callback function will trigger on unsuccessful action                
-					alert(global_errormsg);
+					showError(global_errormsg);
 				}
 			});
 		}
 	}
 	else
 	{
-		alert(error);
+		showAlert(error);
 	}
 });
 
@@ -217,7 +217,7 @@ $(document).on('pageshow', '#case_detail', function(){
 		},
 		error: function (request,error) {
 			// This callback function will trigger on unsuccessful action                
-			alert(global_errormsg);
+			showError(global_errormsg);
 		}
 	});  
 });

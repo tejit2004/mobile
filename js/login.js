@@ -56,7 +56,7 @@ $(document).on('pagebeforeshow', '#login', function(){
 				},
 				error: function (request,error) {
 					// This callback function will trigger on unsuccessful action                
-					showAlert(global_errormsg);
+					showError(global_errormsg);
 				}
 			});                   			
 		}
@@ -107,12 +107,12 @@ $(document).on('pagebeforeshow', '#login', function(){
 							}
 							else
 							{
-                                showAlert('Incorrect Username or password');
+                                showError('Incorrect Username or password');
 							}
                     },
                     error: function (request,error) {
                         // This callback function will trigger on unsuccessful action                
-                        showAlert(global_errormsg);
+                        showError(global_errormsg);
                     }
                 });                   
         } else {
@@ -154,7 +154,7 @@ $(document).on('pagebeforeshow', '#login', function(){
 						},
 						error: function (request,error) {
 							// This callback function will trigger on unsuccessful action                
-							showAlert(global_errormsg);
+							showError(global_errormsg);
 						}
 					}); 
 			}
@@ -219,7 +219,7 @@ $(document).on('click', '#logout', function()
 				},
 				error: function (request,error) {
 					// This callback function will trigger on unsuccessful action                					
-					alert(global_errormsg);
+					showError(global_errormsg);
 				}
 			}); 
 	}

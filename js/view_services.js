@@ -76,11 +76,11 @@ $(document).on('pageinit', '#view_services', function(){
 				},
 				error: function (request,error) {
 					// This callback function will trigger on unsuccessful action                
-					alert(global_errormsg);
+					showError(global_errormsg);
 				}
 			});                   
 		} else {
-			alert('Please select Service Type');
+			showAlert('Please select Service Type');
 		}           
 		return false; // cancel original event to prevent form submitting
 	});    

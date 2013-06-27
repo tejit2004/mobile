@@ -58,14 +58,14 @@ $(document).on('pageshow', '#service_detail', function(){
 			}
 			else if(result.ret == false)
 			{
-				alert(result.error);	
+				showError(result.error);	
 			}
 			
 				
 		},
 		error: function (request,error) {
 			// This callback function will trigger on unsuccessful action                
-			alert(global_errormsg);
+			showError(global_errormsg);
 		}
 	});  
 });
@@ -82,17 +82,17 @@ $(document).on('click', '#dslam_status', function()
 	
 	if(ParentChild == 'Child' && SupplierID == 'SR 0053')
 	{
-		alert('You cannot get the statistics on a secondary line in an LLU bonded set.');
+		showAlert('You cannot get the statistics on a secondary line in an LLU bonded set.');
 		return false;
 	}
 	else if(OrderStage != 'Live')
 	{
-		alert('You can only get line statistics on lines that are Live.');
+		showAlert('You can only get line statistics on lines that are Live.');
 		return false;
 	}
 	else if(SupplierID != 'SR 0053' && TailProviderID != 'SR 0053')
 	{
-		alert('DSLAM stats and line profiles are not available for this type of service.');
+		showAlert('DSLAM stats and line profiles are not available for this type of service.');
 		return false;
 	}
 	else

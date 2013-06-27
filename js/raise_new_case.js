@@ -111,25 +111,25 @@ $(document).on('click', '#submit_case', function()
 						}
 						else
 						{
-							alert('Some problem occured');
+							showError('Some problem occured');
 						}
 						
 						
 					},
 					error: function (request,error) {
 						// This callback function will trigger on unsuccessful action                
-						alert(global_errormsg);
+						showError(global_errormsg);
 					}
 				});  
 			}
 			else
 			{
-				alert(error);
+				showAlert(error);
 			}
 	} 
 	else 
 	{
-		alert('Please fill all necessary fields');
+		showAlert('Please fill all necessary fields');
 	}           
 	return false; // cancel original event to prevent form submitting
 });   

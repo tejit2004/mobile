@@ -43,11 +43,11 @@ $(document).on('pageshow', '#line_usage', function(){
 			}
 			else if(result.ret == false)
 			{
-				alert(result.error);	
+				showError(result.error);	
 			}	
 		},
 		error: function (request,error) {
-			alert(global_errormsg);
+			showError(global_errormsg);
 		}
 	});  
 });

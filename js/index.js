@@ -100,3 +100,11 @@ function showAlert(message) {
     );
 }
 
+function showError(message) {
+    navigator.notification.alert(
+        message,  // message
+        alertDismissed,         // callback
+        'NetConnect Error',            // title
+        'OK'                  // buttonName
+    );
+}

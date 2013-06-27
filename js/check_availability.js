@@ -52,16 +52,16 @@ $(document).on('pagebeforeshow', '#efm_availability', function(){
 						},
 						error: function (request,error) {
 							// This callback function will trigger on unsuccessful action                
-							alert(global_errormsg);
+							showError(global_errormsg);
 						}
 					});  
 				}
 				else
 				{
-					alert(error);
+					showAlert(error);
 				}
         } else {
-            alert('Please fill all necessary fields');
+            showAlert('Please fill all necessary fields');
         }           
             return false; // cancel original event to prevent form submitting
         });    

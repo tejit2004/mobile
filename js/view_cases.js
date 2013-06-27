@@ -38,7 +38,7 @@ $(document).on('pagebeforeshow', '#view_cases', function(){
 		},
 		error: function (request,error) {
 			// This callback function will trigger on unsuccessful action                
-			alert(global_errormsg);
+			showError(global_errormsg);
 		}
 	});  
 });

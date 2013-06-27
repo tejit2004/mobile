@@ -33,12 +33,12 @@ $(document).on('pageshow', '#dslam_status_detail', function(){
 			}
 			else if(result.ret == false)
 			{
-				alert(result.error);	
+				showError(result.error);	
 			}	
 		},
 		error: function (request,error) {
 			// This callback function will trigger on unsuccessful action                
-			alert(global_errormsg);
+			showError(global_errormsg);
 		}
 	});  
 });
