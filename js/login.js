@@ -51,12 +51,12 @@ $(document).on('pagebeforeshow', '#login', function(){
 						}
 						else
 						{
-							alert('Incorrect Username or password');
+							showAlert('Incorrect Username or password');
 						}
 				},
 				error: function (request,error) {
 					// This callback function will trigger on unsuccessful action                
-					alert(global_errormsg);
+					showAlert(global_errormsg);
 				}
 			});                   			
 		}
@@ -107,16 +107,17 @@ $(document).on('pagebeforeshow', '#login', function(){
 							}
 							else
 							{
-                                alert('Incorrect Username or password');
+                                showAlert('Incorrect Username or password');
 							}
                     },
                     error: function (request,error) {
                         // This callback function will trigger on unsuccessful action                
-                        alert(global_errormsg);
+                        showAlert(global_errormsg);
                     }
                 });                   
         } else {
-            do_alert(0,'Please fill all necessary fields.');
+            //do_alert(0,'Please fill all necessary fields.');
+			showAlert('Please fill all necessary fields');
 			//alert('Please fill all necessary fields');
         }           
             return false; // cancel original event to prevent form submitting
@@ -153,7 +154,7 @@ $(document).on('pagebeforeshow', '#login', function(){
 						},
 						error: function (request,error) {
 							// This callback function will trigger on unsuccessful action                
-							alert(global_errormsg);
+							showAlert(global_errormsg);
 						}
 					}); 
 			}
@@ -217,7 +218,7 @@ $(document).on('click', '#logout', function()
 									});
 				},
 				error: function (request,error) {
-					// This callback function will trigger on unsuccessful action                
+					// This callback function will trigger on unsuccessful action                					
 					alert(global_errormsg);
 				}
 			}); 
