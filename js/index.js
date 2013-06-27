@@ -1,5 +1,5 @@
 var global_url = 'https://nc2.cerberusnetworks.co.uk/mobile/';
-var global_errormsg = 'There has been some expected error.Please tray again later.'
+var global_errormsg = 'There has been some expected error.Please try again later.'
 
 function trim(stringToTrim) {
 	return stringToTrim.replace(/^\s+|\s+$/g,"");
@@ -76,5 +76,27 @@ function do_alert( theflag, thetext )
 	
 	$('#login_alert_box').show().fadeOut("fast").fadeIn("fast").delay(2000).fadeOut("fast").hide() ;
 	
+}
+
+//*********************************************************
+// Wait for Cordova to Load
+//*********************************************************
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+	
+}
+		
+// alert dialog dismissed
+function alertDismissed() {
+    // do something
+}
+		
+function showAlert(message) {
+    navigator.notification.alert(
+        message,  // message
+        alertDismissed,         // callback
+        'NetConnect Alert',            // title
+        'OK'                  // buttonName
+    );
 }
 
