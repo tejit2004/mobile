@@ -167,24 +167,7 @@ $(document).on('pagebeforeshow', '#login', function(){
 									dataUrl: "",    //the url fragment that will be displayed for the test.html page
 									transition: "slide"  //if not specified used the default one or the one defined in the default settings
 									});
-	});	
-	
-	
-	/*$(document).on('click', '#view_cases', function(){ 	
-	
-		
-				
-																		
-		$.mobile.changePage('view_cases.html', {
-					changeHash: true,
-					dataUrl: "",    //the url fragment that will be displayed for the test.html page
-					transition: "slide"  //if not specified used the default one or the one defined in the default settings
-					});
-				
-				
-		
-		  
-	});*/	
+	});		
 });
 
 
@@ -233,62 +216,7 @@ $(document).on('click', '#view_services', function()
 								dataUrl: "",    //the url fragment that will be displayed for the test.html page
 								transition: "slide"  //if not specified used the default one or the one defined in the default settings
 								});
-});		
-	
-
-/*$(document).on('pagebeforeshow', '#logout', function(){  
-		
-		$.ajax({url: global_url+'ajaxfiles/check.php',
-			data:{action : 'logout'}, // Convert a form to a JSON string representation
-			//data:{action : 'login', username : username, password : password}, 
-			type: 'get',                   
-			async: true,
-			beforeSend: function() {
-				// This callback function will trigger before data is sent
-				$.mobile.showPageLoadingMsg(true); // This will show ajax spinner
-			},
-			complete: function() {
-				// This callback function will trigger on data sent/received complete
-				$.mobile.hidePageLoadingMsg(); // This will hide ajax spinner
-			},
-			success: function (result) {
-					resultObject.formSubmitionResult = result;
-					localStorage.clear();
-					sessionStorage.clear();	
-					$.mobile.changePage("index.html");															
-			},
-			error: function (request,error) {
-				// This callback function will trigger on unsuccessful action                
-				alert('Network error has occurred please try again!');
-			}
-		});   
-});*/
-
-/*$(document).on('pagebeforeshow', '#list', function(){  
-		
-		$(document).on('click', '#adsl', function()
-		{
-			$.mobile.changePage('check_availability_adsl.html', 
-			{
-				changeHash: false,
-				dataUrl: "",    //the url fragment that will be displayed for the test.html page
-				transition: "slide"  //if not specified used the default one or the one defined in the default settings
-			});
-		});
-	
-});*/
-
-/*$(document).on('pagebeforeshow', '#list', function(){     
-	var data = localStorage.getItem('username');
-
-	if(data == '' || data == 'null' || data == null)		
-	{
-		$.mobile.changePage("index.html");
-	}
-});*/
-      
-
-
+});
 var resultObject = {
     formSubmitionResult : null  
 }
