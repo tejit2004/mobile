@@ -123,41 +123,9 @@ $(document).on('pagebeforeshow', '#login', function(){
             return false; // cancel original event to prevent form submitting
         });    
 		
-		$(document).on('click', '#logout', function()
-		{		
-			if (confirm('Are you sure you want to logout?')) 
-			{
-				$.ajax({url: global_url+'ajaxfiles/check.php',
-						data:{action : 'logout'}, // Convert a form to a JSON string representation
-						//data:{action : 'login', username : username, password : password}, 
-						type: 'get',
-						dataType:'json',
-						async: true,
-						beforeSend: function() {
-							// This callback function will trigger before data is sent
-							$.mobile.showPageLoadingMsg(true); // This will show ajax spinner
-						},
-						complete: function() {
-							// This callback function will trigger on data sent/received complete
-							$.mobile.hidePageLoadingMsg(); // This will hide ajax spinner
-						},
-						success: function (result) {
-								resultObject.formSubmitionResult = result;
-								localStorage.clear();
-								sessionStorage.clear();	
-								//$.mobile.changePage("index.html");															
-								$.mobile.changePage('index.html', {
-											changeHash: true,
-											dataUrl: "",    //the url fragment that will be displayed for the test.html page
-											transition: "flip"  //if not specified used the default one or the one defined in the default settings
-											});
-						},
-						error: function (request,error) {
-							// This callback function will trigger on unsuccessful action                
-							showError(global_errormsg);
-						}
-					}); 
-			}
+	$(document).on('click', '#logout', function()
+	{		
+		showConfirm('Confirm NetConnect Logout', 'Are you sure you want to logout?', 'Yes,No');		
 	});	
 	
 	$(document).on('click', '#view_services', function()
@@ -173,7 +141,25 @@ $(document).on('pagebeforeshow', '#login', function(){
 
 $(document).on('click', '#logout', function()
 { 	
-	if (confirm('Are you sure you want to logout?')) 
+	showConfirm('Confirm NetConnect Logout', 'Are you sure you want to logout?', 'Yes,No');	
+});	
+	
+	
+$(document).on('click', '#view_services', function()
+{	
+	  $.mobile.changePage('view_services.html', {
+								changeHash: true,
+								dataUrl: "",    //the url fragment that will be displayed for the test.html page
+								transition: "slide"  //if not specified used the default one or the one defined in the default settings
+								});
+});
+var resultObject = {
+    formSubmitionResult : null  
+}
+
+// process the confirmation dialog result
+function onConfirm(buttonIndex) {
+   if (buttonIndex == 1) 
 	{
 		$.ajax({url: global_url+'ajaxfiles/check.php',
 				data:{action : 'logout'}, // Convert a form to a JSON string representation
@@ -206,17 +192,15 @@ $(document).on('click', '#logout', function()
 				}
 			}); 
 	}
-});	
-	
-	
-$(document).on('click', '#view_services', function()
-{	
-	  $.mobile.changePage('view_services.html', {
-								changeHash: true,
-								dataUrl: "",    //the url fragment that will be displayed for the test.html page
-								transition: "slide"  //if not specified used the default one or the one defined in the default settings
-								});
-});
-var resultObject = {
-    formSubmitionResult : null  
+}
+
+// Show a custom confirmation dialog
+
+function showConfirm(title, message, buttons) {
+    navigator.notification.confirm(
+        message,  // message
+        onConfirm,              // callback to invoke with index of button pressed
+        title,            // title
+        buttons          // buttonLabels
+    );
 }
