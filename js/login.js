@@ -123,10 +123,10 @@ $(document).on('pagebeforeshow', '#login', function(){
             return false; // cancel original event to prevent form submitting
         });    
 		
-	$(document).on('click', '#logout', function()
+	/*$(document).on('click', '#logout', function()
 	{		
 		showConfirm('Confirm NetConnect Logout', 'Are you sure you want to logout?', 'Yes,No');		
-	});	
+	});*/	
 	
 	$(document).on('click', '#view_services', function()
 	{	
@@ -141,7 +141,7 @@ $(document).on('pagebeforeshow', '#login', function(){
 
 $(document).on('click', '#logout', function()
 { 	
-	showConfirm('Confirm NetConnect Logout', 'Are you sure you want to logout?', 'Yes,No');	
+	showConfirm('Logout & Exit', 'Do you really want to logout and Exit?', 'Yes,No');	
 });	
 	
 	
@@ -185,6 +185,7 @@ function onConfirm(buttonIndex) {
 									dataUrl: "",    //the url fragment that will be displayed for the test.html page
 									transition: "flip"  //if not specified used the default one or the one defined in the default settings
 									});
+						navigator.app.exitApp();				
 				},
 				error: function (request,error) {
 					// This callback function will trigger on unsuccessful action                					
