@@ -1,3 +1,6 @@
+$(document).bind('mobileinit', function(){
+      $.mobile.metaViewportContent = 'width=device-width, user-scalable=yes';
+});
 $(document).on('pageshow', '#raise_new_case', function(){ 
 	
 	$('input[id="subject"]').each(function()

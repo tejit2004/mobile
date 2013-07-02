@@ -1,3 +1,6 @@
+$(document).bind('mobileinit', function(){
+      $.mobile.metaViewportContent = 'width=device-width, user-scalable=yes';
+});
 $(document).on('pagebeforeshow', '#efm_availability', function(){    	
 	var data = localStorage.getItem('username');	
 	

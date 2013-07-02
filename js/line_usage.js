@@ -1,3 +1,6 @@
+$(document).bind('mobileinit', function(){
+      $.mobile.metaViewportContent = 'width=device-width, user-scalable=yes';
+});
 $(document).on('pageshow', '#line_usage', function(){ 
 	var gItemID = decodeURIComponent($.urlParam('gItemID'));
 	$("body").addClass('ui-disabled');

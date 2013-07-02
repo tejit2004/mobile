@@ -41,6 +41,9 @@
 	});
 });*/
 
+$(document).bind('mobileinit', function(){
+      $.mobile.metaViewportContent = 'width=device-width, user-scalable=yes';
+});
 
 $(document).on('click', '#add_note', function(){ 	
 			var CaseID = decodeURIComponent($.urlParam('ID'));	

@@ -1,3 +1,6 @@
+$(document).bind('mobileinit', function(){
+      $.mobile.metaViewportContent = 'width=device-width, user-scalable=yes';
+});
 $(document).on('pageinit', '#view_services', function(){    	
 	
 	$('input[type="text"]').each(function()

@@ -1,3 +1,7 @@
+$(document).bind('mobileinit', function(){
+      $.mobile.metaViewportContent = 'width=device-width, user-scalable=yes';
+});
+
 $(document).on('pageshow', '#dslam_status_detail', function(){ 
 	var gItemID = decodeURIComponent($.urlParam('gItemID'));	
 	var CliNo = decodeURIComponent($.urlParam('CliNo'));

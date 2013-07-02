@@ -8,6 +8,10 @@ var Arrcli = new Array();*/
 var findinventory_div;
 var inventoryresult_div;
 
+$(document).bind('mobileinit', function(){
+      $.mobile.metaViewportContent = 'width=device-width, user-scalable=yes';
+});
+
 function fillDetail(id)
 {
 	var inventory_id = 'inventory_'+id;

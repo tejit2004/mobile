@@ -1,3 +1,7 @@
+$(document).bind('mobileinit', function(){
+      $.mobile.metaViewportContent = 'width=device-width, user-scalable=yes';
+});
+
 $(document).on('pagebeforeshow', '#login', function(){  
 		var username = localStorage.getItem('username');	
 		var password = localStorage.getItem('password');	
@@ -126,7 +130,7 @@ $(document).on('pagebeforeshow', '#login', function(){
 	/*$(document).on('click', '#logout', function()
 	{		
 		showConfirm('Confirm NetConnect Logout', 'Are you sure you want to logout?', 'Yes,No');		
-	});*/	
+	});*/
 	
 	$(document).on('click', '#view_services', function()
 	{	
@@ -140,7 +144,8 @@ $(document).on('pagebeforeshow', '#login', function(){
 
 
 $(document).on('click', '#logout', function()
-{ 	
+{ 
+	
 	showConfirm('Logout & Exit', 'Do you really want to logout and Exit?', 'Yes,No');	
 });	
 	

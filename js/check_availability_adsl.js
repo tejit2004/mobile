@@ -1,3 +1,6 @@
+$(document).bind('mobileinit', function(){
+      $.mobile.metaViewportContent = 'width=device-width, user-scalable=yes';
+});
 $(document).on('pagebeforeshow', '#adsl_availability', function(){    	
 	
 	$('input[type="text"]').each(function()

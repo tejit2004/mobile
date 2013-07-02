@@ -1,3 +1,6 @@
+$(document).bind('mobileinit', function(){
+      $.mobile.metaViewportContent = 'width=device-width, user-scalable=yes';
+});
 $(document).on('pagebeforeshow', '#view_cases', function(){    	
 	
 	var clientID = sessionStorage.getItem("clientID");

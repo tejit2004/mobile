@@ -1,3 +1,6 @@
+$(document).bind('mobileinit', function(){
+      $.mobile.metaViewportContent = 'width=device-width, user-scalable=yes';
+});
 $(document).on('pageshow', '#service_detail', function(){ 
 	var clientID = sessionStorage.getItem("clientID");
 	var InventoryID = decodeURIComponent(GetParameterValues('ID'));
