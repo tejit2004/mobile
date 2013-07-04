@@ -1,5 +1,5 @@
 var global_url = 'https://nc2.cerberusnetworks.co.uk/mobile/';
-var global_errormsg = 'There has been some expected error.Please try again later.'
+var global_errormsg = 'There has been an unexpected error. Please try again later.'
 
 function trim(stringToTrim) {
 	return stringToTrim.replace(/^\s+|\s+$/g,"");
@@ -95,7 +95,7 @@ function showAlert(message) {
     navigator.notification.alert(
         message,  // message
         alertDismissed,         // callback
-        'NetConnect Alert',            // title
+        'NetCONNECT Alert',            // title
         'OK'                  // buttonName
     );
 }
@@ -104,7 +104,7 @@ function showError(message) {
     navigator.notification.alert(
         message,  // message
         alertDismissed,         // callback
-        'NetConnect Error',            // title
+        'NetCONNECT Error',            // title
         'OK'                  // buttonName
     );
 }

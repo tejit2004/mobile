@@ -146,7 +146,7 @@ $(document).on('pagebeforeshow', '#login', function(){
 $(document).on('click', '#logout', function()
 { 
 	
-	showConfirm('Logout & Exit', 'Do you really want to logout and Exit?', 'Yes,No');	
+	showConfirm('Logout & Exit', 'Do you really want to logout and exit?', 'Yes,No');	
 });	
 	
 	

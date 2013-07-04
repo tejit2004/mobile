@@ -31,7 +31,18 @@ $(document).on('pageshow', '#service_detail', function(){
 			var result_html = '';
 			if(result.ret == true)
 			{
-				result_html += '<tr><td><b>Inventory ID : </b></td><td>'+ result.id +'</td></tr><tr><td><b>Order ID : </b></td><td>'+ result.orderID +'</td></tr><tr><td><b>Tel Number : </b></td><td>'+ result.tel_no +'</td></tr><tr><td><b>Name : </b></td><td>'+ result.name +'</td></tr><tr><td><b>Service Tag : </b></td><td>'+ result.service_tag +'</td></tr><tr><td><b>Manufacturer : </b></td><td>'+ result.manufacturer +'</td></tr><tr><td><b>Model : </b></td><td>'+ result.model +'</td></tr><tr><td><b>Description : </b></td><td>'+ result.productdesc +'</td></tr>';
+				if(type == 'Connection')
+				{
+					var caption = 'Order Ref';
+					var value = result.ClientOrderRef;
+				}
+				else
+				{
+					var caption = 'Service Tag';
+					var value = result.service_tag;
+				}
+				
+				result_html += '<tr><td><b>Inventory ID</b></td><td>'+ result.id +'</td></tr><tr><td><b>Order ID</b></td><td>'+ result.orderID +'</td></tr><tr><td><b>Tel Number</b></td><td>'+ result.tel_no +'</td></tr><tr><td><b>Name</b></td><td>'+ result.name +'</td></tr><tr><td><b>'+ caption +'</b></td><td>'+ value +'</td></tr><tr><td><b>Manufacturer</b></td><td>'+ result.manufacturer +'</td></tr><tr><td><b>Model</b></td><td>'+ result.model +'</td></tr><tr><td><b>Description</b></td><td>'+ result.productdesc +'</td></tr>';
 				
 				/*$( "table#service_detail_table tbody" )				
 				.html( html )				
