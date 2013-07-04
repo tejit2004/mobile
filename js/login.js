@@ -175,6 +175,8 @@ function onConfirm(buttonIndex) {
 				dataUrl: "",    //the url fragment that will be displayed for the test.html page
 				transition: "flip"  //if not specified used the default one or the one defined in the default settings
 				});
+	localStorage.clear();
+	sessionStorage.clear();			
 	navigator.app.exitApp();				
 		
    }
