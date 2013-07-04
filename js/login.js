@@ -165,39 +165,19 @@ var resultObject = {
 // process the confirmation dialog result
 function onConfirm(buttonIndex) {
    if (buttonIndex == 1) 
-	{
-		$.ajax({url: global_url+'ajaxfiles/check.php',
-				data:{action : 'logout'}, // Convert a form to a JSON string representation
-				//data:{action : 'login', username : username, password : password}, 
-				type: 'get',
-				dataType:'json',
-				async: true,
-				beforeSend: function() {
-					// This callback function will trigger before data is sent
-					$.mobile.showPageLoadingMsg(true); // This will show ajax spinner
-				},
-				complete: function() {
-					// This callback function will trigger on data sent/received complete
-					$.mobile.hidePageLoadingMsg(); // This will hide ajax spinner
-				},
-				success: function (result) {
-						resultObject.formSubmitionResult = result;
-						localStorage.clear();
-						sessionStorage.clear();	
-						//$.mobile.changePage("index.html");															
-						$.mobile.changePage('index.html', {
-									changeHash: true,
-									dataUrl: "",    //the url fragment that will be displayed for the test.html page
-									transition: "flip"  //if not specified used the default one or the one defined in the default settings
-									});
-						navigator.app.exitApp();				
-				},
-				error: function (request,error) {
-					// This callback function will trigger on unsuccessful action                					
-					showError(global_errormsg);
-				}
-			}); 
-	}
+   {
+		
+	localStorage.clear();
+	sessionStorage.clear();	
+	//$.mobile.changePage("index.html");															
+	$.mobile.changePage('index.html', {
+				changeHash: true,
+				dataUrl: "",    //the url fragment that will be displayed for the test.html page
+				transition: "flip"  //if not specified used the default one or the one defined in the default settings
+				});
+	navigator.app.exitApp();				
+		
+   }
 }
 
 // Show a custom confirmation dialog
