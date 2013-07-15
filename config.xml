@@ -91,8 +91,8 @@
     <!--<gap:splash src="res/screen/ios/Default-568h-Landscape@2x~iphone.png" gap:platform="ios"     width="1136" height="640" />-->
     <gap:splash src="res/screen/ios/Default-Portrait.png"      gap:platform="ios"     width="768" height="1004" />
     <gap:splash src="res/screen/ios/Default-Landscape.png"     gap:platform="ios"     width="1024" height="748" />
-    <gap:splash src="res/screen/ios/Default-Portrait_at_2x.png"      gap:platform="ios"     width="1536" height="2008" />
-    <gap:splash src="res/screen/ios/Default-Landscape_at_2x.png"     gap:platform="ios"     width="2048" height="1496" />
+    <!--<gap:splash src="res/screen/ios/Default-Portrait_at_2x.png"      gap:platform="ios"     width="1536" height="2008" />
+    <gap:splash src="res/screen/ios/Default-Landscape_at_2x.png"     gap:platform="ios"     width="2048" height="1496" />-->
     <gap:splash src="res/screen/windows-phone/screen-portrait.jpg" gap:platform="winphone" />
 
     
