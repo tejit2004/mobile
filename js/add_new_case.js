@@ -244,7 +244,8 @@ $(document).on('click', '#create', function(){
         theme: "c",
         overlyaTheme: "a",		
         transition: "pop",
-		style: "padding:10px;max-width:100%;"
+        positionTo: "window",
+	style: "padding:10px;max-width:100%;"
     }).on("popupafterclose", function () {
         //remove the popup when closing
         $(this).remove();
