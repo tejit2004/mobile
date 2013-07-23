@@ -244,8 +244,7 @@ $(document).on('click', '#create', function(){
         theme: "c",
         overlyaTheme: "a",		
         transition: "pop",
-        positionTo: "window",
-        tolerance: "5,0"	
+        positionTo: "window"        
     }).on("popupafterclose", function () {
         //remove the popup when closing
         $(this).remove();
@@ -293,6 +292,9 @@ $(document).on('click', '#create', function(){
     //$popUp.popup('open');
 });
 
+$(document).live('click', function() {
+    $("#find_inventory_input").focus();
+});
 	
 $(document).on('change', '#add_inventoryid', function(){ 	
 	
