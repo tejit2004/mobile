@@ -260,7 +260,7 @@ $(document).on('click', '#create', function(){
 	
 	
 	
-	var form = $("<form/>", {
+    var form = $("<form/>", {
         id: "form1"
     });
 	
@@ -268,7 +268,7 @@ $(document).on('click', '#create', function(){
         type: "text",
         name: "find_inventory_input",
 		id: "find_inventory_input"        
-    }).appendTo(form);
+    }).appendTo(findinventory_div);
 	
 	$("<input/>", {
         type: "button",
@@ -277,9 +277,9 @@ $(document).on('click', '#create', function(){
 		value: "Search",
 		"data-theme": "b"
 		
-    }).appendTo(form);
+    }).appendTo(findinventory_div);
 	
-	form.appendTo(findinventory_div);
+	//form.appendTo(findinventory_div);
 
     //create a form for the pop up
     /*$("<form>").append($("<input/>", {
