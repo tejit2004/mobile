@@ -243,8 +243,7 @@ $(document).on('click', '#create', function(){
         dismissible: false,
         theme: "c",
         overlyaTheme: "a",		
-        transition: "pop",
-        positionTo: "window"        
+        transition: "pop"        
     }).on("popupafterclose", function () {
         //remove the popup when closing
         $(this).remove();
@@ -258,25 +257,48 @@ $(document).on('click', '#create', function(){
     $("<div/>", {
         text: "Manufacturer, Model, Name and Serial Number OR Exact InventoryID"
     }).appendTo(findinventory_div);
-
-    //create a form for the pop up
-    $("<form>").append($("<input/>", {
+	
+	
+	
+	var form = $("<form/>", {
+        id: "form1"
+    });
+	
+	$("<input/>", {
         type: "text",
         name: "find_inventory_input",
 		id: "find_inventory_input"        
-    })).appendTo(findinventory_div);
-
-    //Create a submit button(fake)
-    
+    }).appendTo(form);
 	
-    $("<form>").append($("<input/>", {
+	$("<input/>", {
         type: "button",
         name: "find_inventory",
 		id: "find_inventory",
 		value: "Search",
 		"data-theme": "b"
 		
-    })).appendTo(findinventory_div);
+    }).appendTo(form);
+	
+	form.appendTo(findinventory_div);
+
+    //create a form for the pop up
+    /*$("<form>").append($("<input/>", {
+        type: "text",
+        name: "find_inventory_input",
+		id: "find_inventory_input"        
+    })).appendTo(findinventory_div);*/
+
+    //Create a submit button(fake)
+    
+	
+    /*$("<form>").append($("<input/>", {
+        type: "button",
+        name: "find_inventory",
+		id: "find_inventory",
+		value: "Search",
+		"data-theme": "b"
+		
+    })).appendTo(findinventory_div);*/
 	
 	//create a back button
     $("<a>", {        
@@ -288,12 +310,17 @@ $(document).on('click', '#create', function(){
 		"class": "ui-btn-right"
     }).appendTo(findinventory_div);
 
-    findinventory_div.popup('open').trigger("create");
+    //findinventory_div.popup('open', {x:30, y:25, tolerance:10}).trigger("create");
+	findinventory_div.popup('open', {y:0}).trigger("create");
     //$popUp.popup('open');
 });
 
 $(document).live('click', function() {
     $("#find_inventory_input").focus();
+});
+
+$("#form1").submit(function(){
+     return false;
 });
 	
 $(document).on('change', '#add_inventoryid', function(){ 	
