@@ -260,13 +260,11 @@ $(document).on('click', '#create', function(){
 	
 	
 	
-    var form = $("<form/>", {
-        id: "form1"
-    });
+    
 	
 	$("<input/>", {
-        type: "text",
-        name: "find_inventory_input",
+	type: "text",
+	name: "find_inventory_input",
 		id: "find_inventory_input"        
     }).appendTo(findinventory_div);
 	
@@ -319,10 +317,6 @@ $(document).live('click', function() {
     $("#find_inventory_input").focus();
 });
 
-$("#form1").submit(function(){
-     return false;
-});
-	
 $(document).on('change', '#add_inventoryid', function(){ 	
 	
 	var inventory_val = $("#add_inventoryid").val();		
