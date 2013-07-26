@@ -313,10 +313,6 @@ $(document).on('click', '#create', function(){
     //$popUp.popup('open');
 });
 
-$(document).live('click', function() {
-    $("#find_inventory_input").focus();
-});
-
 $(document).on('change', '#add_inventoryid', function(){ 	
 	
 	var inventory_val = $("#add_inventoryid").val();		
