@@ -14,6 +14,9 @@ $(document).on('pagebeforeshow', '#efm_availability', function(){
 				var efm_cli = $('#efm_cli').val();
 				var efm_postcode = $('#efm_postcode').val();
 				
+				efm_cli = efm_cli.replace(/\s/g, '');
+				efm_postcode = $.trim(efm_postcode);
+				
 				var postcode_pattern = /^([a-zA-Z0-9]{3,4}\s[a-zA-Z0-9]{3,4})$/;
 				var cli_pattern = /^([0-9]{10,11})$/;
 				var error = '';
