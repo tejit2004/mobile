@@ -31,6 +31,8 @@ $(document).on('pagebeforeshow', '#adsl_availability', function(){
 				var cli_pattern = /^([0-9]{10,11})$/;
 				var error = '';
 				
+				telephone = telephone.replace(/\s/g, '');
+				
 				if(telephone == 'Enter CLI/Telephone')
 				{
 					error += 'Please fill all necessary fields\n';
