@@ -104,7 +104,7 @@ $(document).on('click', '#dslam_status', function()
 		showAlert('You can only get line statistics on lines that are Live.');
 		return false;
 	}
-	else if(SupplierID != 'SR 0053' && TailProviderID != 'SR 0053')
+	else if(SupplierID != 'SR 0053' && TailProviderID != 'SR 0053' && TailProviderID != 'SR 0006')
 	{
 		showAlert('DSLAM stats and line profiles are not available for this type of service.');
 		return false;
