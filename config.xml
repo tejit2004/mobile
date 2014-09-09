@@ -7,7 +7,11 @@
         versionCode = "375" 
         version   = "2.0">
 		
-	<gap:config-file platform="ios" parent="CFBundleVersion"><string>375</string></gap:config-file>		
+	<!--<gap:config-file platform="ios" parent="CFBundleVersion"><string>375</string></gap:config-file>-->
+	
+	<gap:config-file platform="ios" parent="CFBundleShortVersionString">
+		<string>375</string>
+	</gap:config-file>
 	
 	<gap:plugin name="org.apache.cordova.dialogs" />
 
