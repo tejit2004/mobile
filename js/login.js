@@ -44,7 +44,8 @@ $(document).on('pagebeforeshow', '#login', function(){
 							sessionStorage.setItem("contactID", result.contactID);
 							sessionStorage.setItem("clientID", result.clientID);
 							sessionStorage.setItem("CompanyName", result.CompanyName);
-							sessionStorage.setItem("FullName", result.FullName);								
+							sessionStorage.setItem("FullName", result.FullName);
+							sessionStorage.setItem("Flag_EditLineProfile", result.Flag_EditLineProfile);
 							//$.mobile.changePage("index.html#list");	
 							$.mobile.changePage('list.html', {
 							changeHash: true,
@@ -100,7 +101,8 @@ $(document).on('pagebeforeshow', '#login', function(){
 								sessionStorage.setItem("contactID", result.contactID);
 								sessionStorage.setItem("clientID", result.clientID);
 								sessionStorage.setItem("CompanyName", result.CompanyName);
-								sessionStorage.setItem("FullName", result.FullName);								
+								sessionStorage.setItem("FullName", result.FullName);	
+								sessionStorage.setItem("Flag_EditLineProfile", result.Flag_EditLineProfile);							
 								//$.mobile.changePage("index.html#list");	
 								$.mobile.changePage('list.html', {
 								changeHash: true,

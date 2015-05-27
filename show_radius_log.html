@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cerberus Networks - Login</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=1" />
+    <script src="phonegap.js"></script>
+    <link rel="stylesheet" href="./css/jquery.mobile-1.3.1.min.css" />
+    <script src="./jquery/jquery-1.9.1.min.js"></script>    
+    <script src="./jquery/jquery.mobile-1.3.1.min.js"></script>    
+    <script src="./js/index.js"></script>
+    <script src="./js/show_radius_log.js"></script>
+    <style type="text/css">	   
+	 body {
+	  font-size: 12px; 
+	}  
+</style>  
+</head>
+<body>
+    
+    <div data-role="page" id="show_radius_log" data-transition="slide">
+        <div data-theme="b" data-role="header" data-position="fixed">
+            <a data-role="button" data-rel="back" data-icon="arrow-l" href="list.html">Back</a>
+            <h3>Login Log</h3>
+        </div>		
+        <div data-role="content">
+			<table data-role="table" id="table-column-toggle" data-mode="columntoggle" class="ui-responsive table-stroke ui-table ui-table-columntoggle ui-body-d table-stripe">
+              <thead>
+                <tr class="ui-bar-d">
+                  <th>AuthDate</th>
+                  <th data-priority="2">ID</th>
+                  <th data-priority="1">username</th>                  
+                </tr>
+              </thead>
+              <tbody id="login_log_tbody">
+                <tr><td colspan="3">&nbsp;</td></tr>
+            </table>	
+        </div>
+
+         <div data-role="footer" data-theme="b" data-position="fixed">
+            <div data-role="navbar" data-iconpos="left">
+                <ul>
+                    <li class="ui-block-a" style="width:90%;"><a data-icon="netconnect" data-iconpos="top" href="http://www.cerberusnetworks.co.uk" target="_blank">&copy; 2015 Cerberus Networks</a></li>                         
+                    <li class="ui-block-b" style="width:10%;"><a href="settings.html" data-icon="gear">&nbsp;</a></li>
+                </ul>
+            </div><!-- /navbar -->
+        </div><!-- /footer -->
+    </div>
+    
+    
+    <!--<div data-role="page" id="logout">
+        <div data-theme="a" data-role="header">
+            <h3></h3>
+        </div>
+
+        <div data-role="content">			
+        </div>
+
+        <div data-theme="a" data-role="footer" data-position="fixed">
+            <h3>Page footer</h3>
+        </div>
+    </div>-->
+    
+    
+</body>
+</html>

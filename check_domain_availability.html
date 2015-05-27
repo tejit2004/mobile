@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cerberus Networks - Check FTTC and ADSL Availability</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=1" />
+    <script src="phonegap.js"></script>
+    <script src="jquery/jquery-1.9.1.min.js"></script>    
+    <script src="jquery/jquery.mobile-1.3.1.min.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="./js/check_domain_availability.js"></script>
+    <script type="text/javascript" id="runscript">
+		var targets = $( '[rel~=tooltip]' ),
+			target  = false,
+			tooltip = false,
+			title   = false;
+	 
+		targets.bind( 'mouseenter', function()
+		{
+			target  = $( this );
+			tip     = target.attr( 'title' );
+			
+			tooltip = $( '<div id="tooltip"></div>' );
+	 
+			if( !tip || tip == '' )
+				return false;
+	 
+			target.removeAttr( 'title' );
+			tooltip.css( 'opacity', 0 )
+				   .html( tip )
+				   .appendTo( 'body' );
+	 
+			var init_tooltip = function()
+			{
+				if( $( window ).width() < tooltip.outerWidth() * 1.5 )
+					tooltip.css( 'max-width', $( window ).width() / 2 );
+				else
+					tooltip.css( 'max-width', 340 );
+	 
+				var pos_left = target.offset().left + ( target.outerWidth() / 2 ) - ( tooltip.outerWidth() / 2 ),
+					pos_top  = target.offset().top - tooltip.outerHeight() - 20;
+	 
+				if( pos_left < 0 )
+				{
+					pos_left = target.offset().left + target.outerWidth() / 2 - 20;
+					tooltip.addClass( 'left' );
+				}
+				else
+					tooltip.removeClass( 'left' );
+	 
+				if( pos_left + tooltip.outerWidth() > $( window ).width() )
+				{
+					pos_left = target.offset().left - tooltip.outerWidth() + target.outerWidth() / 2 + 20;
+					tooltip.addClass( 'right' );
+				}
+				else
+					tooltip.removeClass( 'right' );
+	 
+				if( pos_top < 0 )
+				{
+					var pos_top  = target.offset().top + target.outerHeight();
+					tooltip.addClass( 'top' );
+				}
+				else
+					tooltip.removeClass( 'top' );
+	 
+				tooltip.css( { left: pos_left, top: pos_top } )
+					   .animate( { top: '+=10', opacity: 1 }, 50 );
+			};
+	 
+			init_tooltip();
+			$( window ).resize( init_tooltip );
+	 
+			var remove_tooltip = function()
+			{
+				tooltip.animate( { top: '-=10', opacity: 0 }, 50, function()
+				{
+					$( this ).remove();
+				});
+	 
+				target.attr( 'title', tip );
+			};
+	 
+			target.bind( 'mouseleave', remove_tooltip );
+			tooltip.bind( 'click', remove_tooltip );
+		});
+	</script>
+    <link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css" />
+	<style type="text/css">	   
+	 body {
+	  font-size: 12px; 
+	} 
+	</style>
+</head>
+<body>
+    
+    <div data-role="page" id="domain_availability">
+        <div data-theme="b" data-role="header" data-position="fixed">    
+        	<a data-role="button" data-rel="back" data-icon="arrow-l" href="list.html">Back</a>       
+            <h3>Domain Availability</h3>
+        </div>
+
+        <div data-role="content">
+        
+        	<div data-role="collapsible" data-content-theme="c" data-collapsed="false" id="search_id">
+               <h3>Check Domain Availability</h3>
+               <form id="adsl_availability" class="ui-body ui-body-c ui-corner-all" data-ajax="true" accept-charset="UTF-8">
+                <fieldset>                
+                    <div>
+                        <input type="text" value="" name="domain_name" id="domain_name" title="Domain (without any suffix)"/>
+                    </div>
+                    <input type="button" data-theme="b" name="submit_domain" id="submit_domain" value="Check Availability">
+                </fieldset>
+            	</form>  
+            </div>
+            
+            <div data-role="collapsible" id="result_id" data-content-theme="c" style="display:none;">
+               <h3>Availability Result</h3>              
+                <table data-role="table" id="view_result" data-mode="columntoggle:none" class="ui-responsive table-stroke ui-table ui-table-columntoggle ui-body-d table-stripe">
+                  <thead>
+                    <tr class="ui-bar-d">
+                      <th>Domain Name</th>
+                      <th>Availability</th>                  
+                    </tr>
+                  </thead>
+                  <tbody id="domain_tbody">
+                    <tr><td colspan="2" style="text-align:center;"></td></tr>
+                  </tbody> 
+                </table>            
+            </div>
+            
+        </div>
+
+         <div data-role="footer" data-theme="b" data-position="fixed">
+            <div data-role="navbar" data-iconpos="left">
+                <ul>
+                    <li class="ui-block-a" style="width:90%;"><a data-icon="netconnect" data-iconpos="top" href="http://www.cerberusnetworks.co.uk" target="_blank">&copy; 2015 Cerberus Networks</a></li>                         
+                    <li class="ui-block-b" style="width:10%;"><a href="settings.html" data-icon="gear">&nbsp;</a></li>
+                </ul>
+            </div><!-- /navbar -->
+        </div><!-- /footer -->
+    </div>
+    
+    <!--<div data-role="page" id="domain_availability_result" data-add-back-btn="true">
+        <div data-theme="b" data-role="header">
+            <a data-role="button" data-rel="back" data-icon="arrow-l">Back</a>  
+            <h3>Domain Availability</h3>
+        </div>
+
+        <div data-role="content">
+            <table data-role="table" id="table-column-toggle" data-mode="columntoggle" class="ui-responsive table-stroke ui-table ui-table-columntoggle ui-body-d table-stripe">
+              <thead>
+                <tr class="ui-bar-d">
+                  <th>Domain Name</th>
+                  <th>Availability</th>                  
+                </tr>
+              </thead>
+              <tbody id="domain_tbody">
+                <tr><td colspan="2" style="text-align:center;"><img src="images/ajax-loader.gif"></td></tr>
+              </tbody> 
+            </table>
+        </div>
+
+        <div data-role="footer" data-theme="b" data-position="fixed">
+            <div data-role="navbar" data-iconpos="left">
+                <ul>
+                    <li class="ui-block-a" style="width:90%;"><a>&copy; 2015 Cerberus Networks</a></li>                         
+                    <li class="ui-block-b" style="width:10%;"><a href="settings.html" data-icon="gear">&nbsp;</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>--> 
+</body>
+</html>

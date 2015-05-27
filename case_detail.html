@@ -16,16 +16,24 @@ body {
 .text-label {
 	color: #aaa;			
 }
+.inline{display:inline !important;}
 
+
+.coll_head_butt{
+    margin-left : 50px !important;
+    /*padding:1em !important;*/
+    border-style:none !important;
+    box-shadow:none !important;
+}
 </style>
 </head>
 <body>
 <div data-role="page" id="case_detail" data-transition="slide">
-  <div data-theme="a" data-role="header"> 
+  <div data-theme="b" data-role="header"> 
   	<a data-role="button" data-rel="back" data-icon="arrow-l" href="list.html">Back</a>
     <h3>Case Detail</h3>
     <!--<a id="add_note" data-rel="dialog">Add Notes</a>-->    
-     <a href="#popupLogin" data-rel="popup" data-position-to="window" data-role="button" data-inline="true">Update Case</a>    
+     <a href="#popupLogin" data-rel="popup" data-position-to="window" data-role="button" data-inline="true">Add</a>    
   </div>
   <div data-role="content" class="ui-content">
     <div data-role="collapsible" data-content-theme="c" data-collapsed="false">
@@ -41,11 +49,10 @@ body {
     </div>   
     
       
-  	<div data-role="collapsible" data-content-theme="c">
-       <h3>Comments and Actions</h3>
+  	<div data-role="collapsible" data-content-theme="c" data-role="header">
+       <h3><span class="inline">Comments and Actions</h3>    
        <p id="summary"><img src="images/ajax-loader.gif"></p>
-    </div>
-    
+    </div>    
    
 
     <div data-role="popup" id="popupLogin" data-theme="c" class="ui-content" data-overlay-theme="a">
@@ -67,9 +74,14 @@ body {
     </div>
     
   
-	<div data-theme="a" data-role="footer" data-position="fixed">
-        <h3>&copy; 2014 Cerberus Networks</h3>
-    </div>
+	<div data-role="footer" data-theme="b" data-position="fixed">
+        <div data-role="navbar" data-iconpos="left">
+            <ul>
+                <li class="ui-block-a"><a>&copy; 2015 Cerberus Networks</a></li>                         
+                <li class="ui-block-b"><a href="settings.html" data-icon="gear">&nbsp;</a></li>
+            </ul>
+        </div><!-- /navbar -->
+    </div><!-- /footer -->
   
 </div>
 </body>
