@@ -101,7 +101,10 @@ overflow:auto;}
 	left: auto;
 	margin: 0;
 }
-.ui-grid-a .ui-block-a { width: 90% }
+.ui-grid-a .ui-block-a { font-size: 12px;
+    text-align: center;
+    vertical-align: bottom;
+    width: 90%; }
 .ui-grid-a .ui-block-b { width: 10%; }
 
 
