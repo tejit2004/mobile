@@ -71,9 +71,6 @@ $(document).on('pageshow', '#dslam_status_detail', function(){
 
 function refreshData(DSLID)
 {
-	
-	
-	alert(DSLID);
 	$("body").addClass('ui-disabled');
 	$.ajax({url: global_url+'ajaxfiles/dslam_status2.php',
 		data:{DSLID : DSLID, d_Date : d_Date, a_Time : a_Time}, 
@@ -99,7 +96,7 @@ function refreshData(DSLID)
 			}
 			else if(result.ret == false)
 			{
-				result_html = '<tr><td style="font-color:red;">The data was not returned in the timeframe expected. Please <a onclick="refreshData(\''+DSLID+'\')" style="cursor:pointer;">click here</a> to refresh the page.</td></tr>';
+				result_html = '<tr><td style="font-color:red;">The data was not returned in the timeframe expected. Please <a data-ajax="true" rel="external" onclick="refreshData(\''+DSLID+'\')" class="ui-link">click here</a> to refresh the page.</td></tr>';
 				
 				$('#dslam_detail_tbody').html(result_html);				
 				$( "dslam_table" ).table( "refresh" );

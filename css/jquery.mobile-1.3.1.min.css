@@ -101,12 +101,14 @@ overflow:auto;}
 	left: auto;
 	margin: 0;
 }
-.ui-grid-a .ui-block-a { width: 90% }
-.ui-grid-a .ui-block-b { width: 10%; } 
+.ui-grid-b .ui-block-a { width: 10% }
+.ui-grid-b .ui-block-b { width: 80%; }
+.ui-grid-b .ui-block-c { width: 10%; } 
 
 .ui-icon-netconnect {
 	background: url("images/netconnect.png") no-repeat rgba(0, 0, 0, 0.4) !important;
-	float:right !important;
+	float:left !important;
+	
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
 	.ui-icon-netconnect {
@@ -114,4 +116,8 @@ overflow:auto;}
 		background-size: 18px 18px;
 	}
 
+}
+
+.ui-navbar li .ui-btn-icon-top .ui-btn-inner {
+    padding-top: 5px;
 }

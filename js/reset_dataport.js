@@ -114,7 +114,7 @@ function refreshPortData(flag)
 				  }
 				  else
 				  {
-					  result_html += '<tr><td style="text-align:center;color:red;"><b>The data was not returned in the timeframe expected. Please <a onclick="refreshPortData(\''+flag+'\')" style="cursor:pointer;color:blue;">click here</a> to refresh the result.</b></td></tr>';
+					  result_html += '<tr><td style="text-align:center;color:red;"><b>The data was not returned in the timeframe expected. Please <a data-ajax="true" rel="external" onclick="refreshPortData(\''+flag+'\')" class="ui-link">click here</a> to refresh the result.</b></td></tr>';
 				
 					  $('#dataport_tbody').html(result_html);				
 					  $( "dataport_table" ).table( "refresh" );

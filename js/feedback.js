@@ -45,10 +45,15 @@ $(document).on('pageinit', '#feedback', function(){
 	});
 	
 	$('#characterLeft').text('255 characters left');
-	$('#add_feedback').keyup(function () {
+	
+	
+	
+	$('#add_feedback').keydown(function () {
 		var max = 255;
+		
 		var len = $(this).val().length;
 		if (len >= max) {
+			$(this).val($(this).val().substring(0, max));
 			$('#characterLeft').text(' you have reached the limit');
 		} else {
 			var ch = max - len;
