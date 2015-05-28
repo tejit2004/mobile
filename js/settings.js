@@ -3,7 +3,6 @@ $(document).bind('mobileinit', function(){
 });
 
 $(document).on('pageinit', '#settings', function(){ 
-	alert('Jere')
 	$(document).on('click', '#logout', function()
 	{ 
 		showConfirm('Logout & Exit', 'Do you really want to logout and exit?', 'Yes,No');	
