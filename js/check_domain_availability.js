@@ -36,8 +36,7 @@ $(document).on('pagebeforeshow', '#domain_availability', function(){
 				domain_name = array[0];
 				
 				domain_name = array[0].replace(/\s/g, '');
-				
-				if(domain_name == 'Domain (without any suffix)')
+				if(domain_name == 'Domain(withoutanysuffix)' || domain_name == '')
 				{
 					error += 'Please fill all necessary fields\n';
 				}

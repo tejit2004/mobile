@@ -83,6 +83,9 @@ $(document).on('pageshow', '#service_detail', function(){
 				if(type != 'Connection')
 				{
 					$('#full_log').attr('style', 'display:none;');
+					$('#dslam_status').attr('style', 'display:none;');
+					$('#line_profile').attr('style', 'display:none;');
+					$('#reset_port').attr('style', 'display:none;');
 				}
 				
 				if(type == 'Connection')
