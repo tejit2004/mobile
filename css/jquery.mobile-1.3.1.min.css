@@ -101,9 +101,9 @@ overflow:auto;}
 	left: auto;
 	margin: 0;
 }
-.ui-grid-b .ui-block-a { width: 10% }
-.ui-grid-b .ui-block-b { width: 80%; }
-.ui-grid-b .ui-block-c { width: 10%; } 
+.ui-grid-a .ui-block-a { width: 90% }
+.ui-grid-a .ui-block-b { width: 10%; }
+
 
 .ui-icon-netconnect {
 	background: url("images/netconnect.png") no-repeat rgba(0, 0, 0, 0.4) !important;
