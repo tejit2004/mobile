@@ -216,7 +216,7 @@ $(document).on('click', '#line_profile', function()
 	}
 	if(TailProviderID == 'SR 0860' && (DSLNetwork != 'WBC' && DSLNetwork != 'FC'))
 	{
-		alert('Line profiles are not currently available for this type of service.');
+		showAlert('Line profiles are not currently available for this type of service.');
 		return false;
 	}
 	
@@ -241,17 +241,17 @@ $(document).on('click', '#reset_port', function()
 	}
 	if(Supplier_ServiceID == '')
 	{
-		showAlert('Line profiles are not available for this type of service.');
+		showAlert('Reset Data Port not available for this type of service.');
 		return false;
 	}
 	if(type != 'Connection' && TailProviderID != 'SR 0860')
 	{
-		showAlert('Line profiles are not available for this type of service.');
+		showAlert('Reset Data Port not available for this type of service.');
 		return false;
 	}
 	if(TailProviderID == 'SR 0860' && (DSLNetwork != 'WBC' && DSLNetwork != 'FC'))
 	{
-		alert('Line profiles are currently not available for this type of service.');
+		alert('Reset Data Port currently not available for this type of service.');
 		return false;
 	}
 	

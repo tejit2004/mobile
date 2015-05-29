@@ -67,8 +67,11 @@ $(document).on('click', '#submit_feedback', function() { // catch the form's sub
 		
 			var comment = $('#add_feedback').val();
 			
-			
-			
+			if($.trim(comment) == 'Comments')
+			{
+				showAlert('Please enter comment');
+				return false;
+			}
 		
 			$("body").addClass('ui-disabled');
 			$.ajax({url: global_url + 'ajaxfiles/feedback.php',
@@ -88,8 +91,12 @@ $(document).on('click', '#submit_feedback', function() { // catch the form's sub
 						
 						if(result.ret == true)
 						{
-							showAlert('Feedback submitted Successfully.');
-							return false;
+							showAlertWOTitle('Thank you for submitting your feedback.');
+							$.mobile.changePage('list.html', {
+								changeHash: true,
+								dataUrl: "",    //the url fragment that will be displayed for the test.html page
+								transition: "slide"  //if not specified used the default one or the one defined in the default settings
+								});
 						}
 						else
 						{

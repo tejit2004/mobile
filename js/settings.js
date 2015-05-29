@@ -5,7 +5,7 @@ $(document).bind('mobileinit', function(){
 $(document).on('pageinit', '#settings', function(){ 
 	$(document).on('click', '#logout', function()
 	{ 
-		showConfirm('Logout & Exit', 'Do you really want to logout and exit?', 'Yes,No');	
+		showConfirm('Logout', 'Do you really want to logout?', 'Yes,No');	
 	});	
 });
 // process the confirmation dialog result
@@ -20,9 +20,7 @@ function onConfirm(buttonIndex) {
 				changeHash: true,
 				dataUrl: "",    //the url fragment that will be displayed for the test.html page
 				transition: "flip"  //if not specified used the default one or the one defined in the default settings
-				});
-	localStorage.clear();
-	sessionStorage.clear();			
+				});		
 	navigator.app.exitApp();				
 		
    }
