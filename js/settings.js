@@ -19,7 +19,8 @@ function onConfirm(buttonIndex) {
 	$.mobile.changePage('index.html', {
 				changeHash: true,
 				dataUrl: "",    //the url fragment that will be displayed for the test.html page
-				transition: "flip"  //if not specified used the default one or the one defined in the default settings
+				transition: "flip",  //if not specified used the default one or the one defined in the default settings
+				reloadPage:true
 				});		
 	//navigator.app.exitApp();				
 		
