@@ -164,19 +164,20 @@ var resultObject = {
     formSubmitionResult : null  
 }
 
+$(document).bind('keydown', function(event) {
+  if (event.keyCode == 27) {
+    
+    event.preventDefault();
+
+    showConfirm('Exit', 'Do you really want to exit?', 'Yes,No');
+  }
+});
+
 // process the confirmation dialog result
 function onConfirm(buttonIndex) {
    if (buttonIndex == 1) 
    {
 		
-	localStorage.clear();
-	sessionStorage.clear();	
-	//$.mobile.changePage("index.html");															
-	$.mobile.changePage('index.html', {
-				changeHash: true,
-				dataUrl: "",    //the url fragment that will be displayed for the test.html page
-				transition: "flip"  //if not specified used the default one or the one defined in the default settings
-				});
 	localStorage.clear();
 	sessionStorage.clear();			
 	navigator.app.exitApp();				

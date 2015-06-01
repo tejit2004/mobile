@@ -1,5 +1,6 @@
 var global_url = 'https://nc2.cerberusnetworks.co.uk/mobile/';
 var global_errormsg = 'There has been an unexpected error. Please try again later.'
+var platform = '';
 		
 function trim(stringToTrim) {
 	return stringToTrim.replace(/^\s+|\s+$/g,"");
@@ -83,12 +84,13 @@ function do_alert( theflag, thetext )
 //*********************************************************
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
-	
+	platform = device.platform;
 }
 		
 // alert dialog dismissed
 function alertDismissed() {
     // do something
+	alert(platform);
 }
 		
 function showAlert(message) {
@@ -104,7 +106,7 @@ function showAlertWOTitle(message) {
     navigator.notification.alert(
         message,  // message
         alertDismissed,         // callback
-        '',            // title
+        null,            // title
         'OK'                  // buttonName
     );
 }
