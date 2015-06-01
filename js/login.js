@@ -148,13 +148,6 @@ $(document).on('pagebeforeshow', '#login', function(){
 });
 
 
-$(document).on('click', '#logout', function()
-{ 
-	
-	showConfirm('Logout & Exit', 'Do you really want to logout and exit?', 'Yes,No');	
-});	
-	
-	
 $(document).on('click', '#view_services', function()
 {	
 	  $.mobile.changePage('view_services.html', {

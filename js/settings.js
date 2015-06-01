@@ -22,6 +22,8 @@ function onLogoutConfirm(buttonIndex) {
 				transition: "flip",  //if not specified used the default one or the one defined in the default settings
 				reloadPage:true
 				});		
+	localStorage.clear();
+	sessionStorage.clear();				
 	//navigator.app.exitApp();				
 		
    }
@@ -30,7 +32,7 @@ function onLogoutConfirm(buttonIndex) {
 // Show a custom confirmation dialog
 
 function showLogoutConfirm(title, message, buttons) {
-    navigator.notification.confirm(
+	navigator.notification.confirm(
         message,  // message
         onLogoutConfirm,              // callback to invoke with index of button pressed
         title,            // title
