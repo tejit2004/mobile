@@ -5,11 +5,11 @@ $(document).bind('mobileinit', function(){
 $(document).on('pageinit', '#settings', function(){ 
 	$(document).on('click', '#logout', function()
 	{ 
-		showConfirm('Logout', 'Do you really want to logout?', 'Yes,No');	
+		showLogoutConfirm('Logout', 'Do you really want to logout?', 'Yes,No');	
 	});	
 });
 // process the confirmation dialog result
-function onConfirm(buttonIndex) {
+function onLogoutConfirm(buttonIndex) {
    if (buttonIndex == 1) 
    {
 		
@@ -29,10 +29,10 @@ function onConfirm(buttonIndex) {
 
 // Show a custom confirmation dialog
 
-function showConfirm(title, message, buttons) {
+function showLogoutConfirm(title, message, buttons) {
     navigator.notification.confirm(
         message,  // message
-        onConfirm,              // callback to invoke with index of button pressed
+        onLogoutConfirm,              // callback to invoke with index of button pressed
         title,            // title
         buttons          // buttonLabels
     );
