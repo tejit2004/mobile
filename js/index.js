@@ -83,12 +83,14 @@ function do_alert( theflag, thetext )
 // Wait for Cordova to Load
 //*********************************************************
 document.addEventListener("deviceready", onDeviceReady, false);
-document.addEventListener('backbutton', backButtonCallback, false);
+
 function onDeviceReady() {
 	
-	alert(window.device.platform + " => " + window.device.version);
+	alert(device.platform + " => " + device.version);
 	
-	if (window.device.platform =='iOS' && parseFloat(window.device.version) >= 7.0) {
+	document.addEventListener('backbutton', backButtonCallback, false);
+	
+	if (device.platform =='iOS' && parseFloat(device.version) >= 7.0) {
           document.body.style.marginTop = "20px";
           // OR do whatever layout you need here, to expand a navigation bar etc
     }
