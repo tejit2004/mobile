@@ -12,7 +12,8 @@ $(document).on('pagebeforeshow', '#login', function(){
 		}
 		
 		if(username != '' && password != '' && username != null && password != null && username != 'null' && password != 'null')
-		{			
+		{	
+			
 			$("body").addClass('ui-disabled');
 			
 			$('.check-user').html('');

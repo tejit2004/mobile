@@ -5,7 +5,19 @@ $(document).bind('mobileinit', function(){
 $(document).on('pageinit', '#settings', function(){ 
 	$(document).on('click', '#logout', function()
 	{ 
-		showLogoutConfirm('Logout', 'Do you really want to logout?', 'Yes,No');	
+		//showLogoutConfirm('Logout', 'Do you really want to logout?', 'Yes,No');	
+		
+		
+		var txt;
+var r = confirm("Press a button!");
+if (r == true) {
+    localStorage.clear();
+	sessionStorage.clear();	
+	$.mobile.changePage($(document.location.href="index.html"));
+} else {
+    txt = "You pressed Cancel!";
+}
+		
 	});	
 });
 // process the confirmation dialog result
@@ -15,13 +27,13 @@ function onLogoutConfirm(buttonIndex) {
 		
 	localStorage.clear();
 	sessionStorage.clear();	
-	//$.mobile.changePage("index.html");															
+	$.mobile.changePage($(document.location.href="index.html"));													
 	/*$.mobile.changePage('index.html');		
 	localStorage.clear();
 	sessionStorage.clear();				*/
 	
 	
-	document.location.href = "index.html";
+	//document.location.href = "index.html";
 	
 	//navigator.app.exitApp();				
 		
