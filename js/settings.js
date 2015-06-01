@@ -5,10 +5,10 @@ $(document).bind('mobileinit', function(){
 $(document).on('pageinit', '#settings', function(){ 
 	$(document).on('click', '#logout', function()
 	{ 
-		//showLogoutConfirm('Logout', 'Do you really want to logout?', 'Yes,No');	
+		showLogoutConfirm('Logout', 'Do you really want to logout?', 'Yes,No');	
 		
 		
-		var txt;
+		/*var txt;
 var r = confirm("Press a button!");
 if (r == true) {
     localStorage.clear();
@@ -16,7 +16,7 @@ if (r == true) {
 	$.mobile.changePage($(document.location.href="index.html"));
 } else {
     txt = "You pressed Cancel!";
-}
+}*/
 		
 	});	
 });
