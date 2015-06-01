@@ -86,14 +86,14 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
 	
-	alert(device.platform + " => " + device.version);
+	
 	
 	document.addEventListener('backbutton', backButtonCallback, false);
 	
-	if (device.platform =='iOS' && parseFloat(device.version) >= 7.0) {
+	/*if (device.platform =='iOS' && parseFloat(device.version) >= 7.0) {
           document.body.style.marginTop = "20px";
-          // OR do whatever layout you need here, to expand a navigation bar etc
-    }
+    
+    }*
 }
 		
 // alert dialog dismissed
