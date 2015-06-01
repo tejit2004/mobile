@@ -16,9 +16,13 @@ function onLogoutConfirm(buttonIndex) {
 	localStorage.clear();
 	sessionStorage.clear();	
 	//$.mobile.changePage("index.html");															
-	$.mobile.changePage('index.html');		
+	/*$.mobile.changePage('index.html');		
 	localStorage.clear();
-	sessionStorage.clear();				
+	sessionStorage.clear();				*/
+	
+	
+	document.location.href = "index.html";
+	
 	//navigator.app.exitApp();				
 		
    }

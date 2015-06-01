@@ -66,40 +66,7 @@ $(document).on('pagebeforeshow', '#login', function(){
 			});                   			
 		}
 		
-		
-		
-          
-		
-	/*$(document).on('click', '#logout', function()
-	{		
-		showConfirm('Confirm NetConnect Logout', 'Are you sure you want to logout?', 'Yes,No');		
-	});*/
-	
-	$(document).on('click', '#view_services', function()
-	{	
-		  $.mobile.changePage('view_services.html', {
-									changeHash: true,
-									dataUrl: "",    //the url fragment that will be displayed for the test.html page
-									transition: "slide"  //if not specified used the default one or the one defined in the default settings
-									});
-	});
-	
-});
-
-
-$(document).on('click', '#view_services', function()
-{	
-	  $.mobile.changePage('view_services.html', {
-								changeHash: true,
-								dataUrl: "",    //the url fragment that will be displayed for the test.html page
-								transition: "slide"  //if not specified used the default one or the one defined in the default settings
-								});
-});
-var resultObject = {
-    formSubmitionResult : null  
-}
-
-$(document).on('click', '#submit', function() { // catch the form's submit event
+		$(document).on('click', '#submit', function() { // catch the form's submit event
 			if($('#username').val().length > 0 && $('#password').val().length > 0){
 				// Send data to server through ajax call
 				// action is functionality we want to call and outputJSON is our data
@@ -161,6 +128,39 @@ $(document).on('click', '#submit', function() { // catch the form's submit event
 			}           
 				return false; // cancel original event to prevent form submitting
 			});
+		
+          
+		
+	/*$(document).on('click', '#logout', function()
+	{		
+		showConfirm('Confirm NetConnect Logout', 'Are you sure you want to logout?', 'Yes,No');		
+	});*/
+	
+	$(document).on('click', '#view_services', function()
+	{	
+		  $.mobile.changePage('view_services.html', {
+									changeHash: true,
+									dataUrl: "",    //the url fragment that will be displayed for the test.html page
+									transition: "slide"  //if not specified used the default one or the one defined in the default settings
+									});
+	});
+	
+});
+
+
+$(document).on('click', '#view_services', function()
+{	
+	  $.mobile.changePage('view_services.html', {
+								changeHash: true,
+								dataUrl: "",    //the url fragment that will be displayed for the test.html page
+								transition: "slide"  //if not specified used the default one or the one defined in the default settings
+								});
+});
+var resultObject = {
+    formSubmitionResult : null  
+}
+
+
 
 // process the confirmation dialog result
 function onConfirm(buttonIndex) {
