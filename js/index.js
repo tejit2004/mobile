@@ -84,7 +84,7 @@ function do_alert( theflag, thetext )
 //*********************************************************
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
-	platform = device.platform;
+	document.addEventListener('backbutton', backButtonCallback, false);
 }
 		
 // alert dialog dismissed
