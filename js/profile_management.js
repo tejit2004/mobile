@@ -39,8 +39,8 @@ $(document).on('pageshow', '#profile_management', function(){
 				SNROptions = SNROptions.split("#*");
 				INPOptions = INPOptions.split("#*");
 				
-				var SNRStr = '';
-				var INPStr = '';
+				var SNRStr = '<option value="">Select SNR</option>';
+				var INPStr = '<option value="">Select Interleaving / INP</option>';
 				
 				for(var i=0;i<SNROptions.length;i++)
 				{
@@ -53,12 +53,11 @@ $(document).on('pageshow', '#profile_management', function(){
 					var INP = INPOptions[i];
 					INPStr += '<option value="'+INP+'">'+INP+'</option>';
 				}
-				$('#SNRCombo').html('<option value="">Select SNR</option>');
-				$('#INPCombo').html('<option value="">Select Interleaving / INP</option>');
-				$('#SNRCombo').append(SNRStr).selectmenu("refresh");
-				//$("#SNRCombo").trigger("change");
-				$('#INPCombo').append(INPStr).selectmenu("refresh");
-				//$('#INPCombo').trigger("change");
+				
+				$('#SNRCombo').html(SNRStr);
+				$("#SNRCombo").trigger("change");
+				$('#INPCombo').html(INPStr);
+				$('#INPCombo').trigger("change");
 			}
 			else if(result.ret == false)
 			{
