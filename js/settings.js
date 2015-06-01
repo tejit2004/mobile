@@ -16,9 +16,9 @@ function onLogoutConfirm(buttonIndex) {
 	localStorage.clear();
 	sessionStorage.clear();	
 	//$.mobile.changePage("index.html");															
-	$.mobile.changePage('index.html');		
-	/*localStorage.clear();
-	sessionStorage.clear();*/
+	$.mobile.changePage('index.html', {reloadPage:true});		
+	localStorage.clear();
+	sessionStorage.clear();				
 	//navigator.app.exitApp();				
 		
    }
