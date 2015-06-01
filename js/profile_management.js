@@ -54,10 +54,10 @@ $(document).on('pageshow', '#profile_management', function(){
 					INPStr += '<option value="'+INP+'">'+INP+'</option>';
 				}
 				
-				$('#SNRCombo').html(SNRStr);
-				$("#SNRCombo").trigger("change");
-				$('#INPCombo').html(INPStr);
-				$('#INPCombo').trigger("change");
+				$('#SNRCombo').append(SNRStr).selectmenu("refresh");
+				//$("#SNRCombo").trigger("change");
+				$('#INPCombo').append(INPStr).selectmenu("refresh");
+				//$('#INPCombo').trigger("change");
 			}
 			else if(result.ret == false)
 			{
