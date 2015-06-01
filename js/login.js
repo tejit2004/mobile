@@ -141,7 +141,16 @@ $(document).on('pagebeforeshow', '#login', function(){
 									dataUrl: "",    //the url fragment that will be displayed for the test.html page
 									transition: "slide"  //if not specified used the default one or the one defined in the default settings
 									});
-	});		
+	});	
+	
+	$(document).bind('keydown', function(event) {
+	  if (event.keyCode == 27) {
+		
+		event.preventDefault();
+	
+		showConfirm('Exit', 'Do you really want to exit?', 'Yes,No');
+	  }
+	});	
 });
 
 

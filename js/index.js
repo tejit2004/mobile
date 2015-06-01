@@ -89,8 +89,7 @@ function onDeviceReady() {
 		
 // alert dialog dismissed
 function alertDismissed() {
-    // do something
-	alert(platform);
+    // do something	
 }
 		
 function showAlert(message) {
@@ -98,15 +97,6 @@ function showAlert(message) {
         message,  // message
         alertDismissed,         // callback
         'NetCONNECT Alert',            // title
-        'OK'                  // buttonName
-    );
-}
-
-function showAlertWOTitle(message) {
-    navigator.notification.alert(
-        message,  // message
-        alertDismissed,         // callback
-        null,            // title
         'OK'                  // buttonName
     );
 }

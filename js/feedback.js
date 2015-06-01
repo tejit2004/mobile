@@ -91,12 +91,7 @@ $(document).on('click', '#submit_feedback', function() { // catch the form's sub
 						
 						if(result.ret == true)
 						{
-							showAlertWOTitle('Thank you for submitting your feedback.');
-							$.mobile.changePage('list.html', {
-								changeHash: true,
-								dataUrl: "",    //the url fragment that will be displayed for the test.html page
-								transition: "slide"  //if not specified used the default one or the one defined in the default settings
-								});
+							showAlertWOTitle('Thank you for submitting your feedback.');							
 						}
 						else
 						{
@@ -115,4 +110,23 @@ $(document).on('click', '#submit_feedback', function() { // catch the form's sub
 	}           
 		return false; // cancel original event to prevent form submitting
 }); 
+
+function showAlertWOTitle(message) {
+    navigator.notification.alert(
+        message,  // message
+        alertWODismissed,         // callback
+        'NetCONNECT',            // title
+        'OK'                  // buttonName
+    );
+}
+
+// alert dialog dismissed
+function alertWODismissed() {
+    $.mobile.changePage('list.html', {
+		changeHash: true,
+		dataUrl: "",    //the url fragment that will be displayed for the test.html page
+		transition: "slide"  //if not specified used the default one or the one defined in the default settings
+		});
+}
+
 
