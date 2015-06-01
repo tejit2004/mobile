@@ -66,7 +66,8 @@ $(document).on('click', '#submit_feedback', function() { // catch the form's sub
 	if($('#add_feedback').val().length > 0){
 		
 			var comment = $('#add_feedback').val();
-			
+			var CompanyName = sessionStorage.getItem("CompanyName");
+			var FullName = sessionStorage.getItem("FullName");
 			if($.trim(comment) == 'Comments')
 			{
 				showAlert('Please enter comment');
@@ -76,7 +77,7 @@ $(document).on('click', '#submit_feedback', function() { // catch the form's sub
 			$("body").addClass('ui-disabled');
 			$.ajax({url: global_url + 'ajaxfiles/feedback.php',
 				//data:{action : 'login', formData : $('#check-user').serialize()}, // Convert a form to a JSON string representation
-				data:{comment : comment}, 
+				data:{comment : comment, CompanyName : CompanyName, FullName : FullName}, 
 				type: 'post',
 				dataType: 'json',	                   
 				async: true,

@@ -53,7 +53,8 @@ $(document).on('pageshow', '#profile_management', function(){
 					var INP = INPOptions[i];
 					INPStr += '<option value="'+INP+'">'+INP+'</option>';
 				}
-				
+				$('#SNRCombo').html('');
+				$('#INPCombo').html('');
 				$('#SNRCombo').append(SNRStr).selectmenu("refresh");
 				//$("#SNRCombo").trigger("change");
 				$('#INPCombo').append(INPStr).selectmenu("refresh");
