@@ -32,7 +32,7 @@ $(document).on('pageshow', '#dslam_status_detail', function(){
 			var result_html = '';
 			if(result.ret == true)
 			{
-				result_html += '<tr><td width="50%"><b>Date/Time : </b></td><td width="50%">'+ result.DateC +'</td></tr><tr><td><b>Sync Speed (Down) : </b></td><td>'+ result.Down +'</td></tr><tr><td><b>Sync Speed (Up) : </b></td><td>'+ result.Up +'</td></tr><tr><td><b>Error Seconds (Down) : </b></td><td>'+ result.ErrorSecondDn +'</td></tr><tr><td><b>Error Seconds (Up) : </b></td><td>'+ result.ErrorSecondUp +'</td></tr><tr><td><b>SNR : </b></td><td>'+ result.SNR +'</td></tr><tr><td><b>INP : </b></td><td>'+ result.INP +'</td></tr>';
+				result_html += '<tr><td width="55%"><b>Date/Time : </b></td><td width="55%">'+ result.DateC +'</td></tr><tr><td><b>Sync Speed (Down) : </b></td><td>'+ result.Down +'</td></tr><tr><td><b>Sync Speed (Up) : </b></td><td>'+ result.Up +'</td></tr><tr><td><b>Error Seconds (Down) : </b></td><td>'+ result.ErrorSecondDn +'</td></tr><tr><td><b>Error Seconds (Up) : </b></td><td>'+ result.ErrorSecondUp +'</td></tr><tr><td><b>SNR : </b></td><td>'+ result.SNR +'</td></tr><tr><td><b>INP : </b></td><td>'+ result.INP +'</td></tr>';
 				
 				$('#dslam_detail_tbody').html(result_html);				
 				$( "dslam_table" ).table( "refresh" );				
@@ -147,7 +147,7 @@ function refreshData(DSLID)
 			var result_html = '';
 			if(result.ret == true)
 			{
-				result_html += '<tr><td width="50%"><b>Date/Time : </b></td><td width="50%">'+ result.DateC +'</td></tr><tr><td><b>Sync Speed (Down) : </b></td><td>'+ result.Down +'</td></tr><tr><td><b>Sync Speed (Up) : </b></td><td>'+ result.Up +'</td></tr><tr><td><b>Error Seconds (Down) : </b></td><td>'+ result.ErrorSecondDn +'</td></tr><tr><td><b>Error Seconds (Up) : </b></td><td>'+ result.ErrorSecondUp +'</td></tr><tr><td><b>SNR : </b></td><td>'+ result.SNR +'</td></tr><tr><td><b>INP : </b></td><td>'+ result.INP +'</td></tr>';
+				result_html += '<tr><td width="55%"><b>Date/Time : </b></td><td width="55%">'+ result.DateC +'</td></tr><tr><td><b>Sync Speed (Down) : </b></td><td>'+ result.Down +'</td></tr><tr><td><b>Sync Speed (Up) : </b></td><td>'+ result.Up +'</td></tr><tr><td><b>Error Seconds (Down) : </b></td><td>'+ result.ErrorSecondDn +'</td></tr><tr><td><b>Error Seconds (Up) : </b></td><td>'+ result.ErrorSecondUp +'</td></tr><tr><td><b>SNR : </b></td><td>'+ result.SNR +'</td></tr><tr><td><b>INP : </b></td><td>'+ result.INP +'</td></tr>';
 				
 				$('#dslam_detail_tbody').html(result_html);				
 				$( "dslam_table" ).table( "refresh" );	

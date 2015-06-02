@@ -117,7 +117,7 @@ $(document).on('pageshow', '#profile_management', function(){
 				if(result.ret == true)			
 				{
 					var uuid = result.uuid;
-					$('#msg').html('Your request was submitted successfully. Profile changes can take up to 5 minutes to take effect. Please <a data-ajax="true" rel="external" onclick="refreshData(\''+uuid+'\', \''+CliNo+'\')" class="ui-link">Refresh</a>.');
+					$('#msg').html('Your request was submitted successfully. Profile changes can take up to 5 minutes to take effect. Please <a data-ajax="true" rel="external" onclick="refreshData(\''+uuid+'\', \''+CliNo+'\')" class="ui-link">click here</a> to refresh.');
 					$('#SNRCombo').val('');
 					$("#SNRCombo").trigger("change");
 					$('#INPCombo').val('');
@@ -189,7 +189,7 @@ function refreshData(uuid, CliNo)
 				else
 				{
 					$('#error_msg').attr('style', 'display:"";');
-					$('#error_msg').html('The data was not returned in the timeframe expected. Please <a data-ajax="true" rel="external" onclick="refreshData(\''+uuid+'\', \''+CliNo+'\')" class="ui-link">Refresh</a>.');					
+					$('#error_msg').html('The data was not returned in the timeframe expected. Please <a data-ajax="true" rel="external" onclick="refreshData(\''+uuid+'\', \''+CliNo+'\')" class="ui-link">click here</a> to refresh.');					
 				}
 			},
 			error: function (request,error) {
