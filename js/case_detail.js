@@ -1,4 +1,4 @@
-/*$(document).on('pagebeforeshow', '#update_case', function(){    	
+$(document).on('pagebeforeshow', '#update_case', function(){    	
 	
 	$('input[type="text"]').each(function()
 	{ 
@@ -39,7 +39,7 @@
 			}
 		});
 	});
-});*/
+});
 
 $(document).bind('mobileinit', function(){
       $.mobile.metaViewportContent = 'width=device-width, user-scalable=yes';
@@ -50,7 +50,7 @@ $(document).on('click', '#add_note', function(){
 			$.mobile.changePage('update_case.html?ID='+CaseID, {
 						changeHash: true,
 						dataUrl: "",    //the url fragment that will be displayed for the test.html page
-						transition: "pop"  //if not specified used the default one or the one defined in the default settings
+						transition: "slide"  //if not specified used the default one or the one defined in the default settings
 						});
 			
 			
@@ -77,7 +77,7 @@ $(document).on('click', '#submit_addnote', function() { // catch the form's subm
 		
 		if(subject.length > 0 && comment.length > 0)
 		{
-			$('#popupLogin').popup("close");	
+			
 			$("body").addClass('ui-disabled');
 			$.ajax({url: global_url + 'ajaxfiles/add_comment.php',
 				//data:{action : 'login', formData : $('#check-user').serialize()}, // Convert a form to a JSON string representation
@@ -99,10 +99,15 @@ $(document).on('click', '#submit_addnote', function() { // catch the form's subm
 						resultObject.formSubmitionResult = result;
 						if(result.ret == true)
 						{
-							//$("#locator").dialog("close");
-							//$('.ui-dialog').dialog('close');
-							$('#summary').html(result.summary);					
-							do_alert(0, 'Case updated Successfully');
+							//$('#summary').html(result.summary);					
+							//do_alert(0, 'Case updated Successfully');
+							//alert('Case updated Successfully');	
+							showAlertWOTitle('Case updated Successfully');	
+							$.mobile.changePage('case_detail.html?From=existing&ID='+CaseID, {
+							changeHash: true,
+							dataUrl: "",    //the url fragment that will be displayed for the test.html page
+							transition: "slide"  //if not specified used the default one or the one defined in the default settings
+							});
 							
 						}
 						
@@ -227,4 +232,16 @@ $(document).on('pageshow', '#case_detail', function(){
 
 var resultObject = {
     formSubmitionResult : null  
+}
+function showAlertWOTitle(message) {
+    navigator.notification.alert(
+        message,  // message
+        alertWODismissed,         // callback
+        'NetCONNECT',            // title
+        'OK'                  // buttonName
+    );
+}
+
+// alert dialog dismissed
+function alertWODismissed() {    
 }

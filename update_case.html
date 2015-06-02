@@ -16,13 +16,15 @@
 	</style>
 </head>
 <body>
-    <div data-role="dialog" id="update_case" data-theme="b">
-        <div data-role="header" data-theme="b" data-position="fixed">
-            <h3>Add Note</h3>
-        </div>
 
-        <div data-role="content">
-            <form id="update_case_form" class="ui-body ui-body-a ui-corner-all" data-ajax="true" accept-charset="UTF-8">
+	<div data-role="page" id="update_case" data-theme="c">
+        <div data-theme="b" data-role="header">    
+        	<a data-role="button" data-rel="back" data-icon="arrow-l" data-theme="b">Back</a>			
+            <h3>Update Case</h3>
+        </div>
+        
+        <div data-role="content">        	
+			<form id="update_case_form" data-ajax="true" accept-charset="UTF-8">
             	
                 <fieldset>                
                 	<div>
@@ -33,10 +35,20 @@
                     </div>                    
                     <input type="button" data-theme="b" name="submit_addnote" id="submit_addnote" value="Submit">
                 </fieldset>
-            </form>                              
+            </form>     
         </div>
-
         
-    </div>    
+    
+
+    <div data-role="footer" data-position="fixed" data-theme="b">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#" onClick="window.open('http://www.cerberusnetworks.co.uk', '_system', 'location=yes');"><img src="css/images/netconnect.png" border="0" style="vertical-align:top;"> &nbsp;&copy; 2015 Cerberus Networks</a></li>
+                    <li><a href="settings.html" data-ajax="false" data-icon="gear">&nbsp;</a></li>
+                </ul>
+            </div><!-- /navbar -->
+        </div><!-- /footer -->
+        
+     </div>       
 </body>
 </html>

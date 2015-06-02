@@ -117,7 +117,7 @@ $(document).on('pageshow', '#profile_management', function(){
 				if(result.ret == true)			
 				{
 					var uuid = result.uuid;
-					$('#msg').html('Your request was submitted successfully. Profile changes can take up to 5 minutes to take effect.');
+					$('#msg').html('Your request was submitted successfully. Profile changes can take up to 5 minutes to take effect. Please <a data-ajax="true" rel="external" onclick="refreshData(\''+uuid+'\', \''+CliNo+'\')" class="ui-link">Refresh</a>.');
 					$('#SNRCombo').val('');
 					$("#SNRCombo").trigger("change");
 					$('#INPCombo').val('');
@@ -146,3 +146,69 @@ $(document).on('pageshow', '#profile_management', function(){
 		return false; // cancel original event to prevent form submitting
 	});
 });
+
+function refreshData(uuid, CliNo)
+{
+	
+	$("body").addClass('ui-disabled');
+	$.ajax({url: global_url + 'ajaxfiles/profile_management.php',
+			//data:{action : 'login', formData : $('#check-user').serialize()}, // Convert a form to a JSON string representation
+			data:{CliNo : CliNo, uuid : uuid}, 
+			type: 'get',
+			dataType: 'json',
+			async: true,
+			beforeSend: function() {
+				// This callback function will trigger before data is sent
+				//$.mobile.showPageLoadingMsg(true); // This will show ajax spinner
+				//$.mobile.loading( 'show' );
+				$.mobile.loading( "show", {	text: "Loading Please wait",textVisible: true,theme: "a",html: ""});
+			},
+			complete: function() {
+				// This callback function will trigger on data sent/received complete
+				//$.mobile.hidePageLoadingMsg(); // This will hide ajax spinner						
+				$.mobile.loading( 'hide' );
+				$("body").removeClass('ui-disabled');
+			},
+			success: function (result) {                													
+				
+				$('#msg').attr('style', 'display:none;');
+				$('#error_msg').attr('style', 'display:none;');
+				if(result.ret == true)			
+				{
+					var result_html_current = '<tr><td width="50%"><b>SNR (Signal to Noise Ratio)</b></td><td width="50%">'+ result.CurrentSNR +'</td></tr><tr><td><b>Interleaving / INP</b></td><td>'+ result.CurrentINP +'</td></tr>';
+				
+					$('#current_tbody').html(result_html_current);				
+					$( "current_table" ).table( "refresh" );
+					showAlertWOTitle('Profile Change request processed successfully');
+				}
+				else if(result.ret == 'Fail')
+				{
+					$('#error_msg').attr('style', 'display:"";');
+					$('#error_msg').html('Profile change request rejected - System fault encountered - please re-submit your request at a later time.');					
+				}
+				else
+				{
+					$('#error_msg').attr('style', 'display:"";');
+					$('#error_msg').html('The data was not returned in the timeframe expected. Please <a data-ajax="true" rel="external" onclick="refreshData(\''+uuid+'\', \''+CliNo+'\')" class="ui-link">Refresh</a>.');					
+				}
+			},
+			error: function (request,error) {
+				// This callback function will trigger on unsuccessful action                
+				showError(global_errormsg);
+				
+			}
+		}); 	
+}
+
+function showAlertWOTitle(message) {
+    navigator.notification.alert(
+        message,  // message
+        alertWODismissed,         // callback
+        'NetCONNECT',            // title
+        'OK'                  // buttonName
+    );
+}
+
+// alert dialog dismissed
+function alertWODismissed() {    
+}

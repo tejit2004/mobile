@@ -93,7 +93,7 @@ function onDeviceReady() {
 	/*if (device.platform =='iOS' && parseFloat(device.version) >= 7.0) {
           document.body.style.marginTop = "20px";
     
-    }*
+    }*/
 }
 		
 // alert dialog dismissed
