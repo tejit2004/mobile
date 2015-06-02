@@ -99,7 +99,7 @@ $(document).on('click', '#submit_addnote', function() { // catch the form's subm
 						resultObject.formSubmitionResult = result;
 						if(result.ret == true)
 						{
-							//$('#summary').html(result.summary);					
+							$('#summary').html(result.summary);					
 							//do_alert(0, 'Case updated Successfully');
 							//alert('Case updated Successfully');	
 							showAlertWOTitle('Case updated Successfully');	
