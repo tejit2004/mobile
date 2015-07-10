@@ -17,6 +17,7 @@ $(document).on('pagebeforeshow', '#login', function(){
 			$("body").addClass('ui-disabled');
 			
 			$('.check-user').html('');
+			$.support.cors = true;
 			$.ajax({url: global_url + 'ajaxfiles/check.php',
 				//data:{action : 'login', formData : $('#check-user').serialize()}, // Convert a form to a JSON string representation
 				data:{action : 'login', username : username, password : password}, 
@@ -74,6 +75,7 @@ $(document).on('pagebeforeshow', '#login', function(){
 					var username = $('#username').val();
 					var password = $('#password').val();
 					$("body").addClass('ui-disabled');
+					$.support.cors = true;
 					$.ajax({url: global_url + 'ajaxfiles/check.php',
 						//data:{action : 'login', formData : $('#check-user').serialize()}, // Convert a form to a JSON string representation
 						data:{action : 'login', username : username, password : password}, 
