@@ -1,5 +1,6 @@
 $(document).bind('mobileinit', function(){
       $.mobile.metaViewportContent = 'width=device-width, user-scalable=yes';
+	  $.mobile.hashListeningEnabled = false;
 });
 $(document).on('pageinit', '#view_services', function(){    	
 	
