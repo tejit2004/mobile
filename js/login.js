@@ -6,6 +6,7 @@ $(document).on('pagebeforeshow', '#login', function(){
 		var username = localStorage.getItem('username');	
 		var password = localStorage.getItem('password');	
 	
+		
 		if(username == '' || username == 'null' || username == null)		
 		{
 			$.mobile.changePage("index.html");
