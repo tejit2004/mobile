@@ -105,11 +105,11 @@ function refreshPortData(flag)
 			  {
 			  	  if(result.error == 'failed')
 				  {
-					  result_html += '<tr><td style="text-align:center;color:red;"><b>Reset Data Port failed. Please contact the Support team for assistance on 0845 257 1335 or at supprt@cerberusnetworks.co.uk.</b></td></tr>';
+					  result_html += '<tr><td style="text-align:center;color:red;"><b>Reset Data Port failed. Please contact the Support team for assistance on 0345 257 1335 or at supprt@cerberusnetworks.co.uk.</b></td></tr>';
 				
 					  $('#dataport_tbody').html(result_html);				
 					  $( "dataport_table" ).table( "refresh" );
-					  showAlert('Reset Data Port failed. Please contact the Support team for assistance on 0845 257 1335 or at supprt@cerberusnetworks.co.uk');
+					  showAlert('Reset Data Port failed. Please contact the Support team for assistance on 0345 257 1335 or at supprt@cerberusnetworks.co.uk');
 					 
 				  }
 				  else
