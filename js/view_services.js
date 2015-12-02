@@ -35,7 +35,7 @@ $(document).on('pageinit', '#view_services', function(){
 				name = '';
 			}
 			
-			if(srno == 'Sr.No or CLI or IP')
+			if(srno == 'Sr.No or CLI or IP address')
 			{
 				srno = '';
 			}
@@ -43,7 +43,7 @@ $(document).on('pageinit', '#view_services', function(){
 			$("body").addClass('ui-disabled');
 			$.ajax({url: global_url + 'ajaxfiles/view_services.php',
 				//data:{action : 'login', formData : $('#check-user').serialize()}, // Convert a form to a JSON string representation
-				data:{clientID : clientID}, 
+				data:{clientID : clientID, name : name, srno : srno, type : type}, 
 				type: 'post',				
 				async: true,
 				beforeSend: function() {
