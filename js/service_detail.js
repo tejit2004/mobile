@@ -234,7 +234,7 @@ $(document).on('click', '#reset_port', function()
 	var DSLNetwork = $('#DSLNetwork').html();
 	var SupplierID = $('#SupplierID').html();
 	
-	showConfirm('Confirm', 'Are you sure you wish to reset the data port for this connection? This will temporarily disconnect the service?', 'Yes,No');
+	showPortResetConfirm('Confirm', 'Are you sure you wish to reset the data port for this connection? This will temporarily disconnect the service?', 'Yes,No');	
 	
 	if(Flag_EditLineProfile != 'Yes')
 	{
@@ -257,6 +257,31 @@ $(document).on('click', '#reset_port', function()
 		return false;
 	}
 	
-	document.location.href = "reset_dataport.html?CliNo="+CliNo+"&ServiceID="+Supplier_ServiceID+"&SID="+TailProviderID;
+	//document.location.href = "reset_dataport.html?CliNo="+CliNo+"&ServiceID="+Supplier_ServiceID+"&SID="+TailProviderID;
 	
 });
+
+// process the confirmation dialog result
+function onPortResetConfirm(buttonIndex) {
+	var CliNo = $('#CliNo').html();
+	var Supplier_ServiceID = $('#Supplier_ServiceID').html();
+	var TailProviderID = $('#TailProviderID').html();
+   if (buttonIndex == 1) 
+   {
+   		document.location.href = "reset_dataport.html?CliNo="+CliNo+"&ServiceID="+Supplier_ServiceID+"&SID="+TailProviderID;
+   }
+   else {
+        return false;
+    }
+}
+
+// Show a custom confirmation dialog
+
+function showPortResetConfirm(title, message, buttons) {
+	navigator.notification.confirm(
+        message,  // message
+        onPortResetConfirm,              // callback to invoke with index of button pressed
+        title,            // title
+        buttons          // buttonLabels
+    );
+}
