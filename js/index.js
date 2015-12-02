@@ -87,12 +87,16 @@ document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
 	
 	document.addEventListener('backbutton', backButtonCallback, false);
-	showAlert(device.platform);
-	showAlert(parseFloat(device.version) + ' => ' + device.version);
-	if (device.platform === 'iOS' && parseFloat(device.version) >= 7.0) {
+	/*showAlert(device.platform);
+	showAlert(parseFloat(device.version) + ' => ' + device.version);*/
+	/*if (device.platform === 'iOS' && parseFloat(device.version) >= 7.0) {
         $('.ui-header > *').css('margin-top', function (index, curValue) {
             return parseInt(curValue, 10) + 20 + 'px';
         });
+    }*/
+	
+	if (device.platform === 'iOS') {
+        document.body.style.marginTop = "20px";
     }
 }
 		
