@@ -251,7 +251,7 @@ $(document).on('click', '#reset_port', function()
 	}
 	if(TailProviderID == 'SR 0860' && (DSLNetwork != 'WBC' && DSLNetwork != 'FC'))
 	{
-		alert('Reset Data Port currently not available for this type of service.');
+		showAlert('Reset Data Port currently not available for this type of service.');
 		return false;
 	}
 	
