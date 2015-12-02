@@ -28,8 +28,8 @@ $(document).on('pageinit', '#view_services', function(){
 		var srno = $('#srno').val();
 		var name = $('#name').val();
 		
-		/*if(type != '')
-		{*/
+		if(type != '')
+		{
 			if(name == 'Name or Order Ref')
 			{
 				name = '';
@@ -79,9 +79,9 @@ $(document).on('pageinit', '#view_services', function(){
 					showError(global_errormsg);
 				}
 			});                   
-		/*} else {
+		} else {
 			showAlert('Please select Service Type');
-		} */          
+		}           
 		return false; // cancel original event to prevent form submitting
 	});    
 });
