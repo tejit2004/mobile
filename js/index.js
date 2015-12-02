@@ -88,11 +88,11 @@ function onDeviceReady() {
 	
 	document.addEventListener('backbutton', backButtonCallback, false);
 	
-	if (device.platform === 'iOS' && parseFloat(device.version) >= 7.0) {
+	/*if (device.platform === 'iOS' && parseFloat(device.version) >= 7.0) {
         $('.ui-header > *').css('margin-top', function (index, curValue) {
             return parseInt(curValue, 10) + 20 + 'px';
         });
-    }
+    }*/
 }
 		
 // alert dialog dismissed

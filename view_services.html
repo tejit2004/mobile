@@ -6,9 +6,15 @@
     <script src="phonegap.js"></script>
     <script src="./jquery/jquery-1.9.1.min.js"></script>       
     <script type="text/javascript">
-	   $(document).bind("mobileinit", function(){
-		 $.mobile.hashListeningEnabled = false;
-	   });
+	   $(document).ready(function() {
+			$(document).on('popupbeforeposition', function( event ){
+				$.mobile.hashListeningEnabled = false;
+			 });
+		
+			$( document ).on( "popupafterclose", function() {
+				$.mobile.hashListeningEnabled = true;
+			});		
+		});
 	</script>
     <script src="./jquery/jquery.mobile-1.3.1.min.js"></script>    
     <script src="./js/index.js"></script>
@@ -44,7 +50,7 @@
                         <input type="text" value="" name="name" id="name" title="Name or Order Ref" autocapitalize="off" autocorrect="off" autocomplete="off" />
                     </div> 
                     <div data-role="fieldcontain" data-theme="c">
-                        <input type="text" value="" name="srno" id="srno" title="Sr.No or CLI or IP address" autocapitalize="off" autocorrect="off" autocomplete="off" />
+                        <input type="text" value="" name="srno" id="srno" title="Serial number, CLI or IP Address" autocapitalize="off" autocorrect="off" autocomplete="off" />
                     </div>                                  
                     <div data-role="fieldcontain">                       
                         <select id="type" name="type" data-native-menu="false" >

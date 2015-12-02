@@ -234,6 +234,8 @@ $(document).on('click', '#reset_port', function()
 	var DSLNetwork = $('#DSLNetwork').html();
 	var SupplierID = $('#SupplierID').html();
 	
+	showConfirm('Confirm', 'Are you sure you wish to reset the data port for this connection? This will temporarily disconnect the service?', 'Yes,No');
+	
 	if(Flag_EditLineProfile != 'Yes')
 	{
 		showAlert('You do not have privileges to make this change.');

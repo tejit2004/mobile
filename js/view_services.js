@@ -35,7 +35,7 @@ $(document).on('pageinit', '#view_services', function(){
 				name = '';
 			}
 			
-			if(srno == 'Sr.No or CLI or IP address')
+			if(srno == 'Serial number, CLI or IP Address')
 			{
 				srno = '';
 			}
