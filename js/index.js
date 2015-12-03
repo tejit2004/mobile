@@ -88,7 +88,7 @@ document.addEventListener("deviceready", function(){
 	  if (device.platform === 'iOS') {
         document.body.style.marginTop = "20px";
       }
- },true);
+ },false);
  
 function onDeviceReady() {
 	

@@ -105,6 +105,7 @@ overflow:auto;}
     text-align: center;
     vertical-align: bottom;
     width: 90%; }
+
 .ui-grid-a .ui-block-b { width: 10%; }
 
 
@@ -123,4 +124,18 @@ overflow:auto;}
 
 .ui-navbar li .ui-btn-icon-top .ui-btn-inner {
     padding-top: 5px;
+}
+
+/* iPad [portrait + landscape] */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+	.selector-01 { margin: 10px; }
+	.selector-02 { margin: 10px; }
+	.selector-03 { margin: 10px; }
+}
+
+/* iPhone [portrait + landscape] */
+@media only screen and (max-device-width: 480px) {
+	.selector-01 { margin: 10px; }
+	.selector-02 { margin: 10px; }
+	.selector-03 { margin: 10px; }
 }

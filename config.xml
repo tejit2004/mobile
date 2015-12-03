@@ -14,6 +14,10 @@
 	</gap:config-file>
 	
 	<gap:plugin name="org.apache.cordova.dialogs" />
+	
+	<gap:plugin name="org.apache.cordova.device" />
+	
+	<!--<gap:plugin name="de.appplant.cordova.plugin.hidden-statusbar-overlay" spec="1.1.0" source="pgb" />-->
 
     <name>NetCONNECT</name>
 
