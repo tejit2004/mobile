@@ -83,12 +83,17 @@ function do_alert( theflag, thetext )
 // Wait for Cordova to Load
 //*********************************************************
 document.addEventListener("deviceready", onDeviceReady, false);
-
+document.addEventListener("deviceready", function(){
+      showAlert(device.platform)
+	  if (device.platform === 'iOS') {
+        document.body.style.marginTop = "20px";
+      }
+ },true);
+ 
 function onDeviceReady() {
 	
 	document.addEventListener('backbutton', backButtonCallback, false);
-	showAlert(device.platform);
-	showAlert(parseFloat(device.version) + ' => ' + device.version);
+	
 	/*if (device.platform === 'iOS' && parseFloat(device.version) >= 7.0) {
         $('.ui-header > *').css('margin-top', function (index, curValue) {
             return parseInt(curValue, 10) + 20 + 'px';
@@ -97,6 +102,7 @@ function onDeviceReady() {
 	
 	if (device.platform === 'iOS') {
         document.body.style.marginTop = "20px";
+		
     }
 }
 		
