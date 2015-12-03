@@ -85,8 +85,9 @@ function do_alert( theflag, thetext )
 document.addEventListener("deviceready", onDeviceReady, false);
 document.addEventListener("deviceready", function(){
       showAlert(device.platform)
-	  if (device.platform === 'iOS') {
+	  if (device.platform == 'iOS') {
         document.body.style.marginTop = "20px";
+        document.getElementsByTagName("body")[0].style.marginTop = "20px";
       }
  },false);
  
