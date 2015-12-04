@@ -4,8 +4,8 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "uk.co.cerberusnetworks.netconnect"
-        versionCode = "450" 
-        version   = "2.1.1">
+        versionCode = "550" 
+        version   = "2.1.2">
 		
 	<!--<gap:config-file platform="ios" parent="CFBundleVersion"><string>375</string></gap:config-file>-->
 	
