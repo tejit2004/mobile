@@ -17,6 +17,9 @@
 	
 	<gap:plugin name="org.apache.cordova.device" />
 	
+	
+
+	
 	<!--<gap:plugin name="de.appplant.cordova.plugin.hidden-statusbar-overlay" spec="1.1.0" source="pgb" />-->
 
     <name>NetCONNECT</name>
@@ -125,7 +128,7 @@
 
 	    
     <!--    Define access to external domains. -->
-       
+       <gap:plugin name="cordova-plugin-whitelist" source="npm" />
         <access origin="*" /> <!--- a wildcard access tag allows access to all external resource.-->
 	<access origin="http://*.cerberusnetworks.co.uk" />
        <!-- Otherwise, you can specify specific domains: -->
